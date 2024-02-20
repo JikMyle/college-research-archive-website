@@ -1,6 +1,7 @@
 @props([
     'label' => '',
-    'setLabelOnTop' => false,
+    'setLabelOnTop' => true,
+    'alwaysShowLabel' => false,
     'name'
 ])
 
@@ -14,12 +15,22 @@
     }
 @endphp
 
-<div {{ $attributes->merge(['class' => "flex " . $layoutClass])}}>
-    @if ($label != '')
+<div {{ $attributes->merge(['class' => "flex relative " . $layoutClass])}}>
+    @if ($label != '' && !$setLabelOnTop)
         <label 
             class='{{ $labelSize }} flex items-center justify-center text-text-light dark:text-text-dark'
             for="{{ $dropdown->attributes->get('id') }}">
             {{ $label }}
+        </label>
+
+    @elseif ($label != '' && $setLabelOnTop)
+        <label 
+            class='{{ $labelSize }} flex absolute z-[2] left-3 -top-[1px] px-2 w-auto h-[3px] overflow-visible bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark transition duration-75 aria-hidden:opacity-0 aria-hidden:translate-y-1/2'
+            for="{{ $dropdown->attributes->get('id') }}"
+            @if (!$alwaysShowLabel) aria-hidden='true' @endif>
+                <span class="relative -top-[0.6rem]">
+                    {{ $label }}
+                </span>
         </label>
     @endif
 

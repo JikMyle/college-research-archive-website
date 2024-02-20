@@ -1,7 +1,7 @@
 <x-shared.layout title='Forgot Password'>
     
     <div class="flex flex-col md:flex-row items-center justify-center md:justify-evenly flex-grow gap-10">
-        <div class='flex'>
+        <div class='flex relative'>
             <p class="text-5xl font-bold text-center md:text-left text-text-light dark:text-text-dark">
                 Let's get you into <br> 
                 your account
@@ -9,7 +9,7 @@
         </div>
     
         <x-input.form :showLogo='true' action='' method='POST'>
-            <x-input.text-field>
+            <x-input.text-field label='Email'>
                 <x-slot:input 
                     id='email'
                     name='email'

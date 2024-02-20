@@ -1,7 +1,7 @@
 <x-shared.layout title='CCIS Archives - Sign In'>
 
 <div class="flex flex-col md:flex-row items-center justify-center md:justify-evenly flex-grow gap-10">
-    <div class='flex'>
+    <div class='flex relative'>
         <p class="text-5xl font-bold text-center md:text-left text-text-light dark:text-text-dark">
             Explore Research <br> 
             Papers and Capstones <br>
@@ -10,8 +10,8 @@
     </div>
 
     <x-input.form :showLogo='true' action='' method='POST'>
-        <div class="flex flex-col gap-3">
-            <x-input.text-field>
+        <div class="flex flex-col gap-4">
+            <x-input.text-field label='Username or Email'>
                 <x-slot:input 
                     id='email'
                     name='email'
@@ -21,7 +21,7 @@
                 </x-slot:input>
             </x-input.text-field>
 
-            <x-input.text-field>
+            <x-input.text-field label='Password'>
                 <x-slot:input 
                     id='password'
                     name='password'
@@ -31,7 +31,7 @@
                 </x-slot:input>
             </x-input.text-field>
         
-            <label class="flex flex-row items-center text-base self-center text-placeholder dark:text-text-dark">
+            <label class="flex flex-row items-center text-base self-center text-placeholder dark:text-text-dark cursor-pointer">
                 <input
                     class='w-4 h-4 mr-2 border-input-border-light dark:border-input-border-dark cursor-pointer'
                     name="remember"

@@ -11,7 +11,7 @@
         <x-input.form :showLogo='true' action='/reset-password' method='POST'>
             @method('patch')
 
-            <div class="flex flex-col gap-3">
+            <div class="flex flex-col gap-4">
                 <input
                     name="token"
                     type="text"
@@ -19,7 +19,7 @@
                     hidden
                 />
 
-                <x-input.text-field>
+                <x-input.text-field label='Email'>
                     <x-slot:input 
                         id='email'
                         name='email'
@@ -29,7 +29,7 @@
                     </x-slot:input>
                 </x-input.text-field>
     
-                <x-input.text-field>
+                <x-input.text-field label='New Password'>
                     <x-slot:input 
                         id='password'
                         name='password'
@@ -39,7 +39,7 @@
                     </x-slot:input>
                 </x-input.text-field>
 
-                <x-input.text-field>
+                <x-input.text-field label='Confirm New Password'>
                     <x-slot:input 
                         id='password_confirmation'
                         name='password_confirmation'

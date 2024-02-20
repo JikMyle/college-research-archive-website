@@ -36,6 +36,24 @@ $(document).ready(function(){
         $(this).siblings('input[name="author_id"]').prop('checked', true);
         form.submit();
     });
+
+    $('input').on('focus', function() {
+        var label = $('label[for="' + $(this).prop('name') + '"][aria-hidden]');
+
+        if(label.length == 0) return;
+
+        label.attr('aria-hidden', false);
+    });
+
+    $('input').on('focusout', function() {
+        var label = $('label[for="' + $(this).prop('name') + '"][aria-hidden]');
+
+        if(label.length == 0) return;
+
+        if($(this).prop('value') != '') return;
+
+        label.attr('aria-hidden', true);
+    });
     
     
     /**

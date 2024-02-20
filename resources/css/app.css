@@ -7,6 +7,32 @@ html {
     @apply text-[12px] lg:text-[16px];
 }
 
+input {
+    @apply hover:drop-shadow
+}
+
+input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
+input::placeholder {
+    @apply !text-placeholder
+}
+
+@layer utilities {
+    .scheme-none {
+        color-scheme: normal;
+    }
+
+    .scheme-dark {
+        color-scheme: dark;
+    }
+
+    .scheme-light {
+        color-scheme: light;
+    }
+}
+
 @layer components {
     .alert {
         @apply flex flex-col self-stretch border-2 bg-transparent p-2 rounded-lg;
