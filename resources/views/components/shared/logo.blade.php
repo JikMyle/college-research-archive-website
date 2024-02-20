@@ -1,4 +1,4 @@
-<div {{ $attributes->merge(['class' => 'flex h-52 w-auto overflow-hidden'])}}>
+<div {{ $attributes->merge(['class' => 'flex h-52 w-auto'])}}>
     <img 
         class="dark:hidden h-full object-scale-contain"
         src="{{ asset('images/logo-light.png')}}" 

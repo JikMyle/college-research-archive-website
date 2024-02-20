@@ -37,6 +37,14 @@ $(document).ready(function(){
         form.submit();
     });
 
+    $('input:not([value=""])').each(function(index, element) {
+        var label = checkForHiddenLabel(element);
+
+        if(!label) return;
+
+        label.attr('aria-hidden', false);
+    });
+
     $('input').on('focus', function() {
         var label = $('label[for="' + $(this).prop('name') + '"][aria-hidden]');
 
@@ -117,6 +125,13 @@ function setTheme(theme) {
     $('html').addClass(theme);
 
     localStorage.theme = theme;
+}
+
+function checkForHiddenLabel(input) {
+    var label = $('label[for="' + $(input).prop('name') + '"][aria-hidden]');
+
+    if(label.length == 0) return null;
+    return label;
 }
 
 /**

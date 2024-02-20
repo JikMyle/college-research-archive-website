@@ -1,164 +1,193 @@
 <x-shared.layout title='Account Settings'>
-    <div class="flex flex-grow flex-col gap-7 my-auto xl:my-0">
-        <x-shared.logo class="justify-center my-16 lg:mb-4"></x-logo>
+    <div class="flex w-full h-auto flex-col lg:flex-row flex-wrap items-center lg:items-start lg:justify-evenly gap-7 my-auto lg:my-auto">
+        <x-shared.logo class="justify-center w-full mb-4"></x-logo>
 
-        <div class="flex self-center xl:hidden w-4/5 h-auto border-b-2 border-input-border-light dark:border-input-border-dark"></div>
+        <div class="flex w-4/5 lg:hidden border-b-2 border-input-border-light dark:border-input-border-dark"></div>
 
-        <div class="flex lg:flex-grow flex-col xl:flex-row items-center justify-center lg:justify-evenly gap-10">
-            <x-input.form class="w-4/5 md:w-2/5" :showLogo='false' :action='route("updateAccount")' method='post'>
-                @method('patch')
+        <x-input.form 
+            class="w-4/5 md:w-2/5 max-sm:self-center" 
+            :showLogo='false' 
+            :action='route("updateAccount")' 
+            method='post'>
 
-                <x-slot:header>
-                    <h3 class="font-bold text-4xl text-sub-text dark:text-text-dark">
-                        Account Information
-                    </h3>
-                </x-slot:header>
+            @method('patch')
 
-                <x-slot:alerts>
-                    @if ($errors->any() && session('updated') == 'info')
-                        <x-shared.alert 
-                            type='error'
-                            :messages='$errors->all()'
-                            class="w-52"
-                        />
+            <x-slot:header>
+                <h3 class="font-bold text-4xl text-sub-text dark:text-text-dark">
+                    Account Information
+                </h3>
+            </x-slot:header>
 
-                    @elseif (session('success') && session('updated') == 'info')
-                        <x-shared.alert 
-                            type='success'
-                            :messages='[session("success")]'
-                            class="w-52"
-                        />
-                    @endif
-                </x-slot:alerts>
+            <x-slot:alerts>
+                @if ($errors->any() && session('updated') == 'info')
+                    <x-shared.alert 
+                        type='error'
+                        :messages='$errors->all()'
+                        class="w-52"
+                    />
 
-                <div class="flex flex-grow flex-col items-start gap-3">
-                    <x-input.text-field class="w-96">
-                        <x-slot:input 
-                            class="!border-0 !border-b-2 !rounded-none flex-grow"
-                            id='username'
-                            name='username'
-                            placeholder='Username'
-                            :value='$user->username'
-                            required>
-                        </x-slot:input>
-                    </x-input.text-field>
+                @elseif (session('success') && session('updated') == 'info')
+                    <x-shared.alert 
+                        type='success'
+                        :messages='[session("success")]'
+                        class="w-52"
+                    />
+                @endif
+            </x-slot:alerts>
 
-                    <x-input.text-field class="w-96">
-                        <x-slot:input 
-                            class="!border-0 !border-b-2 !rounded-none flex-grow"
-                            id='email'
-                            name='email'
-                            type='email'
-                            :value='$user->email'
-                            placeholder='Email Address'
-                            required>
-                        </x-slot:input>
-                    </x-input.text-field>
+            <div class="flex flex-col w-3/5 items-center gap-5">
+                <x-input.text-field 
+                    class="w-full"
+                    label='Username'>
 
-                    <x-input.text-field class="w-96">
-                        <x-slot:input 
-                            class="!border-0 !border-b-2 !rounded-none flex-grow"
-                            id='first_name'
-                            name='first_name'
-                            :value='$user->first_name'
-                            placeholder='First Name'
-                            required>
-                        </x-slot:input>
-                    </x-input.text-field>
+                    <x-slot:input 
+                        class="!border-0 !border-b-2 !rounded-none w-full"
+                        id='username'
+                        name='username'
+                        placeholder='Username'
+                        :value='$user->username'
+                        required>
+                    </x-slot:input>
+                </x-input.text-field>
 
-                    <x-input.text-field class="w-96">
-                        <x-slot:input 
-                            class="!border-0 !border-b-2 !rounded-none flex-grow"
-                            id='last_name'
-                            name='last_name'
-                            :value='$user->last_name'
-                            placeholder='Last Name'
-                            required>
-                        </x-slot:input>
-                    </x-input.text-field>
-                </div>
+                <x-input.text-field 
+                    class="w-full"
+                    label='Email'>
 
-                <x-input.button
-                    name='btnUpdateInfo'
-                    type='submit'
-                    value='btnUpdateInfo'>
-                    Save Changes
-                </x-input.button>
-            </x-input.form>
+                    <x-slot:input 
+                        class="!border-0 !border-b-2 !rounded-none w-full"
+                        id='email'
+                        name='email'
+                        type='email'
+                        :value='$user->email'
+                        placeholder='Email Address'
+                        required>
+                    </x-slot:input>
+                </x-input.text-field>
 
-            <div class="flex w-4/5 h-auto xl:w-auto xl:h-4/5 border-b-2 xl:border-b-2 xl:border-r-2 border-input-border-light dark:border-input-border-dark"></div>
+                <x-input.text-field 
+                    class="w-full"
+                    label='First Name'>
 
-            <x-input.form class="w-4/5 md:w-2/5" :showLogo='false' :action='route("updateAccount")' method='post'>
-                @method('patch')
+                    <x-slot:input 
+                        class="!border-0 !border-b-2 !rounded-none w-full"
+                        id='first_name'
+                        name='first_name'
+                        :value='$user->first_name'
+                        placeholder='First Name'
+                        required>
+                    </x-slot:input>
+                </x-input.text-field>
 
-                <x-slot:header>
-                    <h3 class="font-bold text-4xl text-sub-text dark:text-text-dark">
-                        Password Security
-                    </h3>
-                </x-slot:header>
+                <x-input.text-field 
+                    class="w-full"
+                    label='Last Name'>
 
-                <x-slot:alerts>
-                    @if ($errors->hasAny(['new_password', 'password']) || ($errors->any() && session('updated') == 'password'))
-                        <x-shared.alert 
-                            type='error'
-                            :messages='$errors->all()'
-                            class="w-52"
-                        />
+                    <x-slot:input 
+                        class="!border-0 !border-b-2 !rounded-none w-full"
+                        id='last_name'
+                        name='last_name'
+                        :value='$user->last_name'
+                        placeholder='Last Name'
+                        required>
+                    </x-slot:input>
+                </x-input.text-field>
+            </div>
 
-                    @elseif (session('success') && session('updated') == 'password')
-                        <x-shared.alert 
-                            type='success'
-                            :messages='[session("success")]'
-                            class="w-52"
-                        />
-                    @endif
-                </x-slot:alerts>
+            <x-input.button
+                name='btnUpdateInfo'
+                type='submit'
+                value='btnUpdateInfo'>
+                Save Changes
+            </x-input.button>
+        </x-input.form>
 
-                <div class="flex flex-grow flex-col items-start gap-3">
-                    <x-input.text-field class="w-96">
-                        <x-slot:input 
-                            class="!border-0 !border-b-2 !rounded-none flex-grow"
-                            id='password'
-                            name='password'
-                            type='password'
-                            placeholder='Current Password'
-                            value=''
-                            required>
-                        </x-slot:input>
-                    </x-input.text-field>
+        <div class="flex w-4/5 h-auto lg:w-auto lg:self-stretch border-b-2 lg:border-b-2 lg:border-r-2 border-input-border-light dark:border-input-border-dark"></div>
 
-                    <x-input.text-field class="w-96">
-                        <x-slot:input 
-                            class="!border-0 !border-b-2 !rounded-none flex-grow"
-                            id='new_password'
-                            name='new_password'
-                            type='password'
-                            placeholder='New Password'
-                            value=''
-                            required>
-                        </x-slot:input>
-                    </x-input.text-field>
+        <x-input.form 
+            class="w-4/5 md:w-2/5" 
+            :showLogo='false' 
+            :action='route("updateAccount")' 
+            method='post'>
 
-                    <x-input.text-field class="w-96">
-                        <x-slot:input 
-                            class="!border-0 !border-b-2 !rounded-none flex-grow"
-                            id='new_password_confirmation'
-                            name='new_password_confirmation'
-                            type='password'
-                            placeholder='Confirm New Password'
-                            value=''
-                            required>
-                        </x-slot:input>
-                    </x-input.text-field>
-                </div>
+            @method('patch')
 
-                <x-input.button
-                    name='btnUpdatePassword'
-                    type='submit'
-                    value='btnUpdatePassword'>
-                    Change Password
-                </x-input.button>
-            </x-input.form>
-        </div>
+            <x-slot:header>
+                <h3 class="font-bold text-4xl text-sub-text dark:text-text-dark">
+                    Password Security
+                </h3>
+            </x-slot:header>
+
+            <x-slot:alerts>
+                @if ($errors->hasAny(['new_password', 'password']) || ($errors->any() && session('updated') == 'password'))
+                    <x-shared.alert 
+                        type='error'
+                        :messages='$errors->all()'
+                        class="w-52"
+                    />
+
+                @elseif (session('success') && session('updated') == 'password')
+                    <x-shared.alert 
+                        type='success'
+                        :messages='[session("success")]'
+                        class="w-52"
+                    />
+                @endif
+            </x-slot:alerts>
+
+            <div class="flex w-3/5 flex-col items-start gap-5">
+                <x-input.text-field 
+                    class="w-full"
+                    label='Current Password'>
+
+                    <x-slot:input 
+                        class="!border-0 !border-b-2 !rounded-none w-full"
+                        id='password'
+                        name='password'
+                        type='password'
+                        placeholder='Current Password'
+                        value=''
+                        required>
+                    </x-slot:input>
+                </x-input.text-field>
+
+                <x-input.text-field 
+                    class="w-full"
+                    label='New Password'>
+
+                    <x-slot:input 
+                        class="!border-0 !border-b-2 !rounded-none w-full"
+                        id='new_password'
+                        name='new_password'
+                        type='password'
+                        placeholder='New Password'
+                        value=''
+                        required>
+                    </x-slot:input>
+                </x-input.text-field>
+
+                <x-input.text-field 
+                    class="w-full"
+                    label='Confirm New Password'>
+
+                    <x-slot:input 
+                        class="!border-0 !border-b-2 !rounded-none w-full"
+                        id='new_password_confirmation'
+                        name='new_password_confirmation'
+                        type='password'
+                        placeholder='Confirm New Password'
+                        value=''
+                        required>
+                    </x-slot:input>
+                </x-input.text-field>
+            </div>
+
+            <x-input.button
+                name='btnUpdatePassword'
+                type='submit'
+                value='btnUpdatePassword'>
+                Change Password
+            </x-input.button>
+        </x-input.form>
     </div>
 </x-shared.layout>

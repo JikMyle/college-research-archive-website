@@ -6,9 +6,7 @@
 
 <form {{ $attributes->merge(['class' => 'flex flex-col items-center gap-6'])}}>
     @csrf
-
-    {{ $header }}
-
+    
     @if ($showLogo)
         <img 
             class="dark:hidden w-auto h-48 object-contain"
@@ -20,6 +18,8 @@
             src="{{ asset('images/logo-dark.png')}}" 
             alt="">
     @endif
+
+    {{ $header }}
 
     {{ $alerts }}
 
