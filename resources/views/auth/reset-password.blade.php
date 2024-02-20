@@ -1,14 +1,24 @@
 <x-shared.layout title='Reset Password'>
     
-    <div class="flex flex-col md:flex-row items-center justify-center md:justify-evenly flex-grow gap-10">
-        <div class='flex'>
-            <p class="text-5xl font-bold text-center md:text-left text-text-light dark:text-text-dark">
+    <div class="flex m-auto w-full flex-col lg:flex-row items-center justify-center lg:justify-evenly">
+        <div class='flex my-16'>
+            <p class="z-[1] text-5xl font-bold text-center md:text-left text-text-light dark:text-text-dark">
                 Change your <br> 
                 password
             </p>
+
+            <img 
+                class="dark:hidden absolute -z-[1] -translate-y-1/2 scale-75 lg:scale-125"
+                src="{{ asset('images/yellow-stain.svg')}}" 
+                alt="">
         </div>
     
-        <x-input.form :showLogo='true' action='/reset-password' method='POST'>
+        <x-input.form 
+            :showLogo='true' 
+            action='/reset-password' 
+            method='POST' 
+            class="z-[2] my-16">
+
             @method('patch')
 
             <div class="flex flex-col gap-4">

@@ -42,7 +42,7 @@
     @endphp
 
     <x-input.text-field 
-        class="basis-[49%] md:basis-1/5"
+        class="flex-grow basis-5/12 md:basis-3/12 lg:basis-1/5"
         label='{{ $dateText }} From' 
         :alwaysShowLabel='true'>
 
@@ -56,7 +56,7 @@
     </x-input.text-field>
 
     <x-input.text-field 
-        class="basis-[49%] md:basis-1/5"
+        class="flex-grow basis-5/12 md:basis-3/12 lg:basis-1/5"
         label='{{ $dateText }} To' 
         :alwaysShowLabel='true'>
 
@@ -71,7 +71,7 @@
 
     @if (Route::is('library') || Route::is('admin.documents'))
         <x-input.dropdown 
-            class="basis-[49%] md:basis-1/5"
+            class="flex-grow basis-5/12 md:basis-3/12 lg:basis-1/5"
             label='Program' 
             :alwaysShowLabel='true' 
             name='program'>
@@ -101,7 +101,7 @@
 
     @elseif (Route::is('admin.users'))
         <x-input.dropdown 
-            class="basis-[49%] md:basis-1/5"
+            class="flex-grow basis-5/12 md:basis-3/12 lg:basis-1/5"
             label='Access Level' 
             :alwaysShowLabel='true' 
             name='accessLevel'>
@@ -123,7 +123,7 @@
     @endif
 
     <x-input.dropdown 
-        class="basis-[49%] md:basis-1/5"
+        class="flex-grow basis-5/12 md:basis-3/12 lg:basis-1/5"
         label='Sort By' 
         :alwaysShowLabel='true' 
         name='sortBy'>

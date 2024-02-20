@@ -1,16 +1,6 @@
 <x-shared.layout title='Account Settings'>
     <div class="flex flex-grow flex-col gap-7 my-auto xl:my-0">
-        <div class="flex justify-center items-center my-6">
-            <img 
-                class="dark:hidden w-auto h-52 object-contain"
-                src="{{ asset('images/logo-light.png')}}" 
-                alt="">
-
-            <img 
-                class="hidden dark:flex w-auto h-52 object-contain"
-                src="{{ asset('images/logo-dark.png')}}" 
-                alt="">
-        </div>
+        <x-shared.logo class="justify-center my-16 lg:mb-4"></x-logo>
 
         <div class="flex self-center xl:hidden w-4/5 h-auto border-b-2 border-input-border-light dark:border-input-border-dark"></div>
 

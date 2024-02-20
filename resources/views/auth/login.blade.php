@@ -1,15 +1,25 @@
 <x-shared.layout title='CCIS Archives - Sign In'>
 
-<div class="flex flex-col md:flex-row items-center justify-center md:justify-evenly flex-grow gap-10">
-    <div class='flex relative'>
-        <p class="text-5xl font-bold text-center md:text-left text-text-light dark:text-text-dark">
+<div class="flex m-auto w-full flex-col lg:flex-row items-center justify-center lg:justify-evenly">
+    <div class='flex relative my-16'>
+        <p class="z-[1] text-5xl font-bold text-center md:text-left text-text-light dark:text-text-dark">
             Explore Research <br> 
             Papers and Capstones <br>
             Online!
         </p>
+
+        <img 
+            class="dark:hidden absolute -z-[1] -translate-y-1/2 scale-75 lg:scale-125"
+            src="{{ asset('images/yellow-stain.svg')}}" 
+            alt="">
     </div>
 
-    <x-input.form :showLogo='true' action='' method='POST'>
+    <x-input.form 
+        :showLogo='true' 
+        action='' 
+        method='POST' 
+        class="z-[2] my-16">
+
         <div class="flex flex-col gap-4">
             <x-input.text-field label='Username or Email'>
                 <x-slot:input 
