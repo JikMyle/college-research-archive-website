@@ -1,7 +1,7 @@
 <x-shared.layout title='New Document'>
     <div class="flex flex-grow flex-col xl:flex-row my-auto xl:my-0 items-center justify-center xl:justify-evenly gap-10">
         <p class="mt-10 text-5xl font-bold text-center md:text-left text-text-light dark:text-text-dark">
-            Add New Document
+            Test
         </p>
 
         <div class="flex w-4/5 h-auto xl:w-auto xl:h-4/5 border-b-2 xl:border-b-2 xl:border-r-2 border-input-border-light dark:border-input-border-dark"></div>
