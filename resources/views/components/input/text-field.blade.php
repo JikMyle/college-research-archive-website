@@ -1,45 +1,41 @@
 @props([
     'label' => '',
-    'setLabelOnTop' => true,
+    'labelOnSide' => false,
     'alwaysShowLabel' => false,
 ])
 
-@php
-    $layoutClass = 'flex-row justify-end gap-2 items-center';
-    $labelSize = 'text-base';
+<div {{ $attributes->merge(['class' => 'flex flex-row items-center gap-3'])}}>
+    @if ($label && $labelOnSide)
+            <label 
+                class='flex text-text-light dark:text-text-dark'
+                for="{{ $input->attributes->get('id') }}">
+                {{ $label }}
+            </label>
+        @endif
 
-    if($setLabelOnTop) {
-        $layoutClass = 'flex-col justify-start items-start';
-        $labelSize = 'text-sm';
-    }
-@endphp
+    <fieldset 
+        {{ $input->attributes->only('class')->merge(['class' => 'flex w-full h-full relative border-input-border-light bg-transparent dark:border-input-border-dark dark:bg-transparent dark:text-text-dark border-2 rounded-xl  dark:placeholder:text-text-dark'])}}>
 
-<div {{ $attributes->merge(['class' => "flex relative " . $layoutClass])}}>
-    @if ($label != '' && !$setLabelOnTop)
-        <label 
-            class='{{ $labelSize }} flex items-center justify-center text-text-light dark:text-text-dark'
-            for="{{ $input->attributes->get('id') }}">
-            {{ $label }}
-        </label>
+        @if ($label && !$labelOnSide)
+            <legend 
+                class="z-[1] pointer-events-none flex items-center h-0 ml-2 px-2 {{ (!$alwaysShowLabel) ? 'aria-hidden:absolute transition duration-75 aria-hidden:opacity-0 aria-hidden:translate-y-4': '' }}"
+                @if (!$alwaysShowLabel) aria-hidden='true' @endif>
+                
+                <label 
+                    class='text-sm '
+                    for="{{ $input->attributes->get('id') }}"
+                    >
+                        {{ $label }}
+                </label>
+            </legend>
+        @endif
 
-    @elseif ($label != '' && $setLabelOnTop)
-        <label 
-            class='{{ $labelSize }} flex absolute z-[2] left-3 -top-[0.15rem] px-2 w-auto h-2 overflow-visible bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark transition duration-75 aria-hidden:opacity-0 aria-hidden:translate-y-1/2'
-            for="{{ $input->attributes->get('id') }}"
-            @if (!$alwaysShowLabel) aria-hidden='true' @endif>
-                <span class="relative -top-2">
-                    {{ $label }}
-                </span>
-        </label>
-    @endif
+        <input {{$input->attributes->except('class')->merge([
+                    'class' => 'box-border w-full h-full rounded-xl p-2 bg-transparent focus:outline-none',
+                    'type' => 'text',
+                    'value' => old($input->attributes->get('name')),
+                ])}}>
 
-    
-
-    <input {{$input->attributes->merge([
-                'class' => 'box-border w-80 h-10 p-2 text-left border-input-border-light dark:border-input-border-dark dark:bg-transparent dark:text-text-dark border-2 rounded-xl  dark:placeholder:text-text-dark',
-                'type' => 'text',
-                'value' => old($input->attributes->get('name')),
-            ])}}>
-
-    {{ $input }}
+        {{ $input }}
+    </fieldset>
 </div>

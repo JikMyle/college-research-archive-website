@@ -28,7 +28,7 @@
                     label='Title'>
 
                     <x-slot:input 
-                        class="!border-0 !border-b-2 !rounded-none w-full"
+                        class="border-0 !border-b-2 rounded-none"
                         id='title'
                         name='title'
                         placeholder='Title'
@@ -37,11 +37,11 @@
                 </x-input.text-field>
 
                 <x-input.text-field 
-                    class="basis-1/5"
-                    label='Date Submitted: '>
+                    class="basis-1/5 flex-shrink h-10"
+                    label='Date Submitted: '
+                    :alwaysShowLabel='true'>
 
                     <x-slot:input 
-                        class="w-full"
                         id='date_submitted'
                         name='date_submitted'
                         type='date'
@@ -50,13 +50,12 @@
                 </x-input.text-field>
 
                 <x-input.dropdown 
-                    class="basis-3/5 flex-grow"
+                    class="basis-2/5 flex-grow h-10"
                     label='Program:'
                     :alwaysShowLabel='true' 
                     name='program'>
 
                     <x-slot:dropdown 
-                        class="w-full"
                         id="program"
                         required>
 
@@ -82,15 +81,12 @@
                     </x-slot:dropdown>
                 </x-input.dropdown>
 
-                <x-input.text-field class="w-full">
-                    <x-slot:input 
-                        class="border-none !p-0 file:shadow-sm file:mr-4 file:rounded-xl file:border-none h-auto file:button"
-                        id='upload_file'
-                        name='upload_file'
-                        type='file'
-                        required>
-                    </x-slot:input>
-                </x-input.text-field>
+                <input 
+                    class="flex w-full border-none !p-0 file:shadow-sm file:mr-4 file:rounded-xl file:border-none h-auto file:button"
+                    id='upload_file'
+                    name='upload_file'
+                    type='file'
+                    required>
 
                 <textarea 
                     class="flex w-full p-2 text-base rounded-xl bg-white dark:bg-transparent border-2 border-input-border-light dark:border-input-border-dark text-text-light dark:text-text-dark dark:placeholder:text-text-dark"

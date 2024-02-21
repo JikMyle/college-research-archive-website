@@ -21,7 +21,7 @@
         class="z-[2] my-16">
 
         <div class="flex flex-col gap-4">
-            <x-input.text-field label='Username or Email'>
+            <x-input.text-field class="w-80" label='Username or Email'>
                 <x-slot:input 
                     id='email'
                     name='email'
@@ -31,7 +31,7 @@
                 </x-slot:input>
             </x-input.text-field>
 
-            <x-input.text-field label='Password'>
+            <x-input.text-field class="w-80" label='Password'>
                 <x-slot:input 
                     id='password'
                     name='password'

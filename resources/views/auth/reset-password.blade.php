@@ -29,7 +29,7 @@
                     hidden
                 />
 
-                <x-input.text-field label='Email'>
+                <x-input.text-field class="w-80" label='Email'>
                     <x-slot:input 
                         id='email'
                         name='email'
@@ -39,7 +39,7 @@
                     </x-slot:input>
                 </x-input.text-field>
     
-                <x-input.text-field label='New Password'>
+                <x-input.text-field class="w-80" label='New Password'>
                     <x-slot:input 
                         id='password'
                         name='password'
@@ -49,7 +49,7 @@
                     </x-slot:input>
                 </x-input.text-field>
 
-                <x-input.text-field label='Confirm New Password'>
+                <x-input.text-field class="w-80" label='Confirm New Password'>
                     <x-slot:input 
                         id='password_confirmation'
                         name='password_confirmation'

@@ -17,9 +17,15 @@
 
     @empty($alerts)
         @if (session('success'))
-            <x-shared.alert type='success' :messages='[session("success")]'/>
+            <x-shared.alert 
+                type='success' 
+                :messages='[session("success")]'
+                class='flex-grow'/>
         @elseif (!$errors->isEmpty())
-            <x-shared.alert type='error' :messages='$errors->all()'/>
+            <x-shared.alert 
+                type='error' 
+                :messages='$errors->all()'
+                class='flex-grow'/>
         @endif
     @endempty
     

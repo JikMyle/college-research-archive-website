@@ -7,7 +7,7 @@ html {
     @apply text-[14px] lg:text-[16px];
 }
 
-input {
+fieldset:has(input, select) {
     @apply hover:drop-shadow
 }
 

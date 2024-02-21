@@ -37,16 +37,17 @@ $(document).ready(function(){
         form.submit();
     });
 
-    $('input:not([value=""])').each(function() {
+    $('input').each(function() {
         var label = checkForHiddenLabel($(this));
 
         if(!label) return;
 
-        label.attr('aria-hidden', false);
+        if($(this).prop('value') != '') label.attr('aria-hidden', false);
+        else label.attr('aria-hidden', true);
     });
 
     $('input').on('focus', function() {
-        var label = $('label[for="' + $(this).prop('name') + '"][aria-hidden]');
+        var label = $('label[for="' + $(this).prop('name') + '"]').parent();
 
         if(label.length == 0) return;
 
@@ -54,7 +55,7 @@ $(document).ready(function(){
     });
 
     $('input').on('focusout', function() {
-        var label = $('label[for="' + $(this).prop('name') + '"][aria-hidden]');
+        var label = $('label[for="' + $(this).prop('name') + '"]').parent();
 
         if(label.length == 0) return;
 
@@ -128,7 +129,7 @@ function setTheme(theme) {
 }
 
 function checkForHiddenLabel(input) {
-    var label = $('label[for="' + input.prop('name') + '"][aria-hidden]');
+    var label = $('label[for="' + input.prop('name') + '"]').parent();
 
     if(label.length == 0)  return null;
 

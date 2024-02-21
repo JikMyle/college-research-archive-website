@@ -19,44 +19,48 @@
             method='POST'>
 
             <div class="flex flex-col gap-4">
-                <x-input.text-field label='First Name'>
+                <x-input.text-field class='w-80' label='First Name'>
                     <x-slot:input 
                         id='first_name'
                         name='first_name'
                         placeholder='First name'
-                        required>
+                        required
+                        autocomplete>
                     </x-slot:input>
                 </x-input.text-field>
     
-                <x-input.text-field label='Last Name'>
+                <x-input.text-field class='w-80' label='Last Name'>
                     <x-slot:input 
                         id='last_name'
                         name='last_name'
                         placeholder='Last name'
-                        required>
+                        required
+                        autocomplete>
                     </x-slot:input>
                 </x-input.text-field>
 
-                <x-input.text-field label='Username'>
+                <x-input.text-field class='w-80' label='Username'>
                     <x-slot:input 
                         id='username'
                         name='username'
                         placeholder='Username'
-                        required>
+                        required
+                        autocomplete>
                     </x-slot:input>
                 </x-input.text-field>
 
-                <x-input.text-field label='Email'>
+                <x-input.text-field class='w-80' label='Email'>
                     <x-slot:input 
                         id='email'
                         name='email'
                         placeholder='Email Address'
                         type='email'
-                        required>
+                        required
+                        autocomplete>
                     </x-slot:input>
                 </x-input.text-field>
 
-                <x-input.text-field label='Password'>
+                <x-input.text-field class='w-80' label='Password'>
                     <x-slot:input 
                         id='password'
                         name='password'
@@ -66,7 +70,7 @@
                     </x-slot:input>
                 </x-input.text-field>
 
-                <x-input.text-field label='Confirm Password'>
+                <x-input.text-field class='w-80' label='Confirm Password'>
                     <x-slot:input 
                         id='password_confirmation'
                         name='password_confirmation'
@@ -76,7 +80,7 @@
                     </x-slot:input>
                 </x-input.text-field>
 
-                <x-input.dropdown label='Access Level:' :setLabelOnTop='false' name='access_level'>
+                <x-input.dropdown label='Access Level:' :labelOnSide='true' name='access_level'>
                     <x-slot:dropdown id="access_level" class="flex-grow">
                         <x-input.dropdown.item>
                             ...

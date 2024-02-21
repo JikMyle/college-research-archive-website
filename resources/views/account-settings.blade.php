@@ -5,7 +5,7 @@
         <div class="flex w-4/5 lg:hidden border-b-2 border-input-border-light dark:border-input-border-dark"></div>
 
         <x-input.form 
-            class="w-3/5 lg:w-96 max-sm:self-center" 
+            class="w-3/5 lg:w-96" 
             :showLogo='false' 
             :action='route("updateAccount")' 
             method='post'>
@@ -23,14 +23,14 @@
                     <x-shared.alert 
                         type='error'
                         :messages='$errors->all()'
-                        class="basis-3/5 self-center"
+                        class="basis-3/5 flex-grow"
                     />
 
                 @elseif (session('success') && session('updated') == 'info')
                     <x-shared.alert 
                         type='success'
                         :messages='[session("success")]'
-                        class="basis-3/5 self-center"
+                        class="basis-3/5 flex-grow"
                     />
                 @endif
             </x-slot:alerts>
@@ -41,7 +41,7 @@
                     label='Username'>
 
                     <x-slot:input 
-                        class="!border-0 !border-b-2 !rounded-none w-full"
+                        class="border-0 border-b-2 rounded-none pt-1"
                         id='username'
                         name='username'
                         placeholder='Username'
@@ -55,7 +55,7 @@
                     label='Email'>
 
                     <x-slot:input 
-                        class="!border-0 !border-b-2 !rounded-none w-full"
+                        class="border-0 border-b-2 rounded-none pt-1"
                         id='email'
                         name='email'
                         type='email'
@@ -70,7 +70,7 @@
                     label='First Name'>
 
                     <x-slot:input 
-                        class="!border-0 !border-b-2 !rounded-none w-full"
+                        class="border-0 border-b-2 rounded-none pt-1"
                         id='first_name'
                         name='first_name'
                         :value='$user->first_name'
@@ -84,7 +84,7 @@
                     label='Last Name'>
 
                     <x-slot:input 
-                        class="!border-0 !border-b-2 !rounded-none w-full"
+                        class="border-0 border-b-2 rounded-none pt-1"
                         id='last_name'
                         name='last_name'
                         :value='$user->last_name'
@@ -123,14 +123,14 @@
                     <x-shared.alert 
                         type='error'
                         :messages='$errors->all()'
-                        class="basis-3/5 self-center"
+                        class="basis-3/5 flex-grow"
                     />
 
                 @elseif (session('success') && session('updated') == 'password')
                     <x-shared.alert 
                         type='success'
                         :messages='[session("success")]'
-                        class="basis-3/5 self-center"
+                        class="basis-3/5 flex-grow"
                     />
                 @endif
             </x-slot:alerts>
@@ -141,7 +141,7 @@
                     label='Current Password'>
 
                     <x-slot:input 
-                        class="!border-0 !border-b-2 !rounded-none w-full"
+                        class="border-0 border-b-2 rounded-none pt-1"
                         id='password'
                         name='password'
                         type='password'
@@ -156,7 +156,7 @@
                     label='New Password'>
 
                     <x-slot:input 
-                        class="!border-0 !border-b-2 !rounded-none w-full"
+                        class="border-0 border-b-2 rounded-none pt-1"
                         id='new_password'
                         name='new_password'
                         type='password'
@@ -171,7 +171,7 @@
                     label='Confirm New Password'>
 
                     <x-slot:input 
-                        class="!border-0 !border-b-2 !rounded-none w-full"
+                        class="border-0 border-b-2 rounded-none pt-1"
                         id='new_password_confirmation'
                         name='new_password_confirmation'
                         type='password'

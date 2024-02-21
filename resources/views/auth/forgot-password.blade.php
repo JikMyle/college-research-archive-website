@@ -19,7 +19,7 @@
             method='POST' 
             class="z-[2] my-16">
 
-            <x-input.text-field label='Email'>
+            <x-input.text-field class="w-80" label='Email'>
                 <x-slot:input 
                     id='email'
                     name='email'

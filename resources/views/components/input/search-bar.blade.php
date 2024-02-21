@@ -5,9 +5,8 @@
     method="get">
 
     <div class="flex flex-row items-center justify-between basis-full gap-2">
-        <x-input.text-field class="flex-grow">
+        <x-input.text-field class="w-full h-12">
             <x-slot:input
-                class="w-full h-12"
                 id='keywords'
                 name='keywords'
                 type='text'
@@ -42,12 +41,12 @@
     @endphp
 
     <x-input.text-field 
-        class="flex-grow basis-5/12 md:basis-3/12 lg:basis-1/5"
+        class="flex-grow h-9 basis-5/12 md:basis-3/12 lg:basis-1/5"
         label='{{ $dateText }} From' 
         :alwaysShowLabel='true'>
 
         <x-slot:input 
-            class="dark:scheme-dark text-sm h-9 w-full"
+            class="dark:scheme-dark"
             id='dateFrom'
             name='dateFrom'
             type='date'
@@ -56,12 +55,12 @@
     </x-input.text-field>
 
     <x-input.text-field 
-        class="flex-grow basis-5/12 md:basis-3/12 lg:basis-1/5"
+        class="flex-grow h-9 basis-5/12 md:basis-3/12 lg:basis-1/5"
         label='{{ $dateText }} To' 
         :alwaysShowLabel='true'>
 
         <x-slot:input 
-            class="dark:scheme-dark text-sm h-9  w-full"
+            class="dark:scheme-dark"
             id='dateTo'
             name='dateTo'
             type='date'
@@ -71,12 +70,12 @@
 
     @if (Route::is('library') || Route::is('admin.documents'))
         <x-input.dropdown 
-            class="flex-grow basis-5/12 md:basis-3/12 lg:basis-1/5"
+            class="flex-grow h-9 basis-5/12 md:basis-3/12 lg:basis-1/5"
             label='Program' 
             :alwaysShowLabel='true' 
             name='program'>
             
-            <x-slot:dropdown id="program" class="text-sm h-9 w-full">
+            <x-slot:dropdown id="program">
                 <x-input.dropdown.item>
                     ...
                 </x-input.dropdown.item>
@@ -101,12 +100,12 @@
 
     @elseif (Route::is('admin.users'))
         <x-input.dropdown 
-            class="flex-grow basis-5/12 md:basis-3/12 lg:basis-1/5"
+            class="flex-grow h-9 basis-5/12 md:basis-3/12 lg:basis-1/5"
             label='Access Level' 
             :alwaysShowLabel='true' 
             name='accessLevel'>
             
-            <x-slot:dropdown id="accessLevel" class="text-sm h-9 w-full">
+            <x-slot:dropdown id="accessLevel">
                 <x-input.dropdown.item>
                     ...
                 </x-input.dropdown.item>
@@ -123,12 +122,12 @@
     @endif
 
     <x-input.dropdown 
-        class="flex-grow basis-5/12 md:basis-3/12 lg:basis-1/5"
+        class="flex-grow h-9 basis-5/12 md:basis-3/12 lg:basis-1/5"
         label='Sort By' 
         :alwaysShowLabel='true' 
         name='sortBy'>
         
-        <x-slot:dropdown id="sortBy" class="text-sm h-9 w-full">
+        <x-slot:dropdown id="sortBy">
             <x-input.dropdown.item>
                 ...
             </x-input.dropdown.item>
@@ -190,7 +189,7 @@
     </x-input.dropdown>
     
     @if (Route::is('admin.users') || Route::is('admin.documents'))
-        <label class="flex flex-row items-center gap-2 text-sm text-text-light dark:text-text-dark leading-4 cursor-pointer">
+        <label class="flex flex-row items-center h-9 gap-2 text-sm text-text-light dark:text-text-dark leading-4 cursor-pointer">
             <span class="md:hidden">Show Trash</span>
             <span class="hidden md:inline">Show<br>Trash</span>
 

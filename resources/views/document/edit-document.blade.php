@@ -23,14 +23,14 @@
                     <x-shared.alert 
                         type='error'
                         :messages='$errors->all()'
-                        class="basis-3/5 self-center"
+                        class="basis-3/5 flex-grow"
                     />
 
                 @elseif (session('success') && session('updated') == 'info')
                     <x-shared.alert 
                         type='success'
                         :messages='[session("success")]'
-                        class="basis-3/5 self-center"
+                        class="basis-3/5 flex-grow"
                     />
                 @endif
             </x-slot:alerts>
@@ -53,11 +53,10 @@
                 </x-input.text-field>
 
                 <x-input.text-field
-                    class="w-fit" 
+                    class="w-fit h-11" 
                     label='Date Submitted: '>
 
-                    <x-slot:input 
-                        class="w-full"
+                    <x-slot:input
                         id='date_submitted'
                         name='date_submitted'
                         value='{{ $document->date_submitted }}'
@@ -67,11 +66,12 @@
                 </x-input.text-field>
 
                 <x-input.dropdown
-                    class="basis-1/2 flex-grow" 
-                    label='Program:' 
+                    class="basis-1/2 flex-grow h-11" 
+                    label='Program:'
+                    :alwaysShowLabel='true' 
                     name='program'>
 
-                    <x-slot:dropdown id="program" class="w-full" required>
+                    <x-slot:dropdown id="program" required>
                         <x-input.dropdown.item>
                             ...
                         </x-input.dropdown.item>
@@ -94,14 +94,11 @@
                     </x-slot:dropdown>
                 </x-input.dropdown>
 
-                <x-input.text-field class="w-full">
-                    <x-slot:input 
-                        class="border-none !p-0 file:shadow-sm file:mr-4 file:rounded-xl file:border-none h-auto file:button"
-                        id='upload_file'
-                        name='upload_file'
-                        type='file'>
-                    </x-slot:input>
-                </x-input.text-field>
+                <input 
+                    class="flex w-full border-none !p-0 file:shadow-sm file:mr-4 file:rounded-xl file:border-none h-auto file:button"
+                    id='upload_file'
+                    name='upload_file'
+                    type='file'>
 
                 <textarea 
                     class="flex w-full p-2 text-base rounded-xl bg-white dark:bg-transparent border-2 border-input-border-light dark:border-input-border-dark text-text-light dark:text-text-dark dark:placeholder:text-text-dark"
@@ -191,7 +188,7 @@
                 </div>
             </x-input.form>
 
-            <div class="flex w-4/5 h-auto lg:w-auto lg:self-stretch border-b-2 lg:border-b-2 lg:border-r-2 border-input-border-light dark:border-input-border-dark"></div>
+            <div class="flex w-full h-auto lg:w-auto lg:self-stretch border-b-2 lg:border-b-2 lg:border-r-2 border-input-border-light dark:border-input-border-dark"></div>
 
             <x-input.form
                 class="w-full"
