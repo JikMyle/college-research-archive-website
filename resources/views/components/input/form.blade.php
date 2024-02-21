@@ -8,15 +8,7 @@
     @csrf
     
     @if ($showLogo)
-        <img 
-            class="dark:hidden w-auto h-48 object-contain"
-            src="{{ asset('images/logo-light.png')}}" 
-            alt="">
-
-        <img 
-            class="hidden dark:flex w-auto h-48 object-contain"
-            src="{{ asset('images/logo-dark.png')}}" 
-            alt="">
+        <x-shared.logo/>
     @endif
 
     {{ $header }}

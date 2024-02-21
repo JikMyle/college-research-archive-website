@@ -1,7 +1,7 @@
 <x-shared.layout title='Reset Password'>
     
     <div class="flex m-auto w-full flex-col lg:flex-row items-center justify-center lg:justify-evenly">
-        <div class='flex my-16'>
+        <div class='flex relative my-16'>
             <p class="z-[1] text-5xl font-bold text-center md:text-left text-text-light dark:text-text-dark">
                 Change your <br> 
                 password

@@ -27,6 +27,8 @@ Route::get('about', function() {
     return view('about');
 });
 
+Route::get('logout', [LoginController::class, 'logout']);
+
 /* 
     Routes in the group below are accessible if use is not logged in
  */
@@ -53,9 +55,7 @@ Route::middleware('guest')->group(function() {
 /*
  *  Routes in the group below requires the user to be logged in
  */
-Route::middleware('auth')->group(function() {
-    Route::get('logout', [LoginController::class, 'logout']);
-
+Route::middleware(['auth', 'prevent-back-history'])->group(function() {
     Route::get('/', function () {
         return redirect('library');
     });

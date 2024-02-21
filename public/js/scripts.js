@@ -37,7 +37,7 @@ $(document).ready(function(){
         form.submit();
     });
 
-    $('input:not([value=""])').each(function(index, element) {
+    $('input:not([value=""])').each(function(element) {
         var label = checkForHiddenLabel(element);
 
         if(!label) return;
@@ -203,9 +203,9 @@ function createAuthorRow(index) {
                 (index + 1) +
             '</td>' +
             '<td>' +
-                '<div class="flex flex-row justify-end gap-3 !justify-center w-11/12">' +
+                '<div class="flex flex-row justify-end gap-3 px-2">' +
                     '<input ' +
-                        'class="author-first-name w-80 h-10 p-2 text-base text-left border-input-border-light dark:border-input-border-dark dark:bg-transparent dark:text-text-dark border-2 rounded-xl  dark:placeholder:text-text-dark !border-0 !border-b-2 !rounded-none flex-grow"' +
+                        'class="author-first-name w-80 h-10 p-2 text-base text-left border-input-border-light dark:border-input-border-dark dark:bg-transparent dark:text-text-dark border-2 rounded-xl  dark:placeholder:text-text-dark !border-0 !border-b-2 !rounded-none w-full"' +
                         'type="text"' + 
                         'name="authors[' + index + '][first_name]"' + 
                         'placeholder="First Name"' + 
@@ -213,9 +213,9 @@ function createAuthorRow(index) {
                 '</div>' +                      
             '</td>' +
             '<td>' +
-                '<div class="flex flex-row justify-end gap-3 !justify-center w-11/12">' +
+                '<div class="flex flex-row justify-end gap-3 px-2">' +
                     '<input ' +
-                        'class="author-last-name w-80 h-10 p-2 text-base text-left border-input-border-light dark:border-input-border-dark dark:bg-transparent dark:text-text-dark border-2 rounded-xl  dark:placeholder:text-text-dark !border-0 !border-b-2 !rounded-none flex-grow"' +
+                        'class="author-last-name w-80 h-10 p-2 text-base text-left border-input-border-light dark:border-input-border-dark dark:bg-transparent dark:text-text-dark border-2 rounded-xl  dark:placeholder:text-text-dark !border-0 !border-b-2 !rounded-none w-full"' +
                         'type="text"' +
                         'name="authors[' + index + '][last_name]"' +
                         'placeholder="Last Name"' +
