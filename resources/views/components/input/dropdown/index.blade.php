@@ -25,10 +25,10 @@
 
     @elseif ($label != '' && $setLabelOnTop)
         <label 
-            class='{{ $labelSize }} flex absolute z-[2] left-3 -top-[1px] px-2 w-auto h-[3px] overflow-visible bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark transition duration-75 aria-hidden:opacity-0 aria-hidden:translate-y-1/2'
+            class='{{ $labelSize }} flex absolute z-[2] left-3 -top-[0.15rem] px-2 w-auto h-2 overflow-visible bg-bg-light dark:bg-bg-dark text-text-light dark:text-text-dark transition duration-75 aria-hidden:opacity-0 aria-hidden:translate-y-1/2'
             for="{{ $dropdown->attributes->get('id') }}"
             @if (!$alwaysShowLabel) aria-hidden='true' @endif>
-                <span class="relative -top-[0.6rem]">
+                <span class="relative -top-2">
                     {{ $label }}
                 </span>
         </label>

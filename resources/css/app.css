@@ -4,7 +4,7 @@
 
 html {
     font-family: Inter;
-    @apply text-[12px] lg:text-[16px];
+    @apply text-[14px] lg:text-[16px];
 }
 
 input {

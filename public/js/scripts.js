@@ -37,8 +37,8 @@ $(document).ready(function(){
         form.submit();
     });
 
-    $('input:not([value=""])').each(function(element) {
-        var label = checkForHiddenLabel(element);
+    $('input:not([value=""])').each(function() {
+        var label = checkForHiddenLabel($(this));
 
         if(!label) return;
 
@@ -128,9 +128,10 @@ function setTheme(theme) {
 }
 
 function checkForHiddenLabel(input) {
-    var label = $('label[for="' + $(input).prop('name') + '"][aria-hidden]');
+    var label = $('label[for="' + input.prop('name') + '"][aria-hidden]');
 
-    if(label.length == 0) return null;
+    if(label.length == 0)  return null;
+
     return label;
 }
 

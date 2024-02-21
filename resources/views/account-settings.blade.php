@@ -5,7 +5,7 @@
         <div class="flex w-4/5 lg:hidden border-b-2 border-input-border-light dark:border-input-border-dark"></div>
 
         <x-input.form 
-            class="w-4/5 md:w-2/5 max-sm:self-center" 
+            class="w-3/5 lg:w-96 max-sm:self-center" 
             :showLogo='false' 
             :action='route("updateAccount")' 
             method='post'>
@@ -13,7 +13,7 @@
             @method('patch')
 
             <x-slot:header>
-                <h3 class="font-bold text-4xl text-sub-text dark:text-text-dark">
+                <h3 class="w-full text-center lg:text-start font-bold text-4xl text-sub-text dark:text-text-dark">
                     Account Information
                 </h3>
             </x-slot:header>
@@ -23,19 +23,19 @@
                     <x-shared.alert 
                         type='error'
                         :messages='$errors->all()'
-                        class="w-52"
+                        class="basis-3/5 self-center"
                     />
 
                 @elseif (session('success') && session('updated') == 'info')
                     <x-shared.alert 
                         type='success'
                         :messages='[session("success")]'
-                        class="w-52"
+                        class="basis-3/5 self-center"
                     />
                 @endif
             </x-slot:alerts>
 
-            <div class="flex flex-col w-3/5 items-center gap-5">
+            <div class="flex flex-col w-full items-center gap-5">
                 <x-input.text-field 
                     class="w-full"
                     label='Username'>
@@ -105,7 +105,7 @@
         <div class="flex w-4/5 h-auto lg:w-auto lg:self-stretch border-b-2 lg:border-b-2 lg:border-r-2 border-input-border-light dark:border-input-border-dark"></div>
 
         <x-input.form 
-            class="w-4/5 md:w-2/5" 
+            class="w-3/5 lg:w-96" 
             :showLogo='false' 
             :action='route("updateAccount")' 
             method='post'>
@@ -113,7 +113,7 @@
             @method('patch')
 
             <x-slot:header>
-                <h3 class="font-bold text-4xl text-sub-text dark:text-text-dark">
+                <h3 class="w-full text-center lg:text-start font-bold text-4xl text-sub-text dark:text-text-dark">
                     Password Security
                 </h3>
             </x-slot:header>
@@ -123,19 +123,19 @@
                     <x-shared.alert 
                         type='error'
                         :messages='$errors->all()'
-                        class="w-52"
+                        class="basis-3/5 self-center"
                     />
 
                 @elseif (session('success') && session('updated') == 'password')
                     <x-shared.alert 
                         type='success'
                         :messages='[session("success")]'
-                        class="w-52"
+                        class="basis-3/5 self-center"
                     />
                 @endif
             </x-slot:alerts>
 
-            <div class="flex w-3/5 flex-col items-start gap-5">
+            <div class="flex w-full flex-col items-start gap-5">
                 <x-input.text-field 
                     class="w-full"
                     label='Current Password'>

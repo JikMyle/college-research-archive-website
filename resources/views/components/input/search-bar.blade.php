@@ -29,11 +29,11 @@
 
         switch ($route) {
             case 'admin.users':
-                $dateText = 'Date Registered';
+                $dateText = 'Registered';
                 break;
             
             case('admin.documents' || 'library'):
-                $dateText = 'Date Submitted';
+                $dateText = 'Submitted';
                 break;
 
             default:
