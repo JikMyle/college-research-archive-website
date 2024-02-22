@@ -67,6 +67,16 @@ $(document).ready(function(){
     $('button[aria-label="Close"]').on('click', function() {
         $(this).parent().remove();
     });
+
+    $('*[data-activate-on="hover"]').on('mouseenter', function() {
+        checkAriaStates($(this));
+        $("#" + $(this).attr('aria-controls')).attr('aria-hidden', false);
+    })
+
+    $('*[data-activate-on="hover"]').on('mouseleave', function() {
+        checkAriaStates($(this));
+        $("#" + $(this).attr('aria-controls')).attr('aria-hidden', true);
+    })
     
     /**
      * Updates buttons and checkboxes when a checkbox value changes
@@ -129,6 +139,11 @@ function setTheme(theme) {
     $('html').addClass(theme);
 
     localStorage.theme = theme;
+}
+
+function checkAriaStates(element) {
+    if($(this).attr('aria-expanded') == 'false') $(this).attr('aria-expanded', true);
+    else if($(this).attr('aria-expanded') == 'true') $(this).attr('aria-expanded', false);
 }
 
 function checkForHiddenLabel(input) {

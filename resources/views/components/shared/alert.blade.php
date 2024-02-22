@@ -19,7 +19,7 @@
         class="text-inherit transition-scale hover:brightness-125 active:scale-75"
         aria-label="Close">
 
-        <svg class="w-6 h-6 text-inherit">
+        <svg class="w-5 h-5 text-inherit">
             <use 
                 width='100%' 
                 height='100%' 

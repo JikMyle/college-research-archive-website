@@ -1,0 +1,14 @@
+<svg id='icon' xmlns="http://www.w3.org/2000/svg" fill='currentColor' width='100%' height='100%' viewBox="0 0 26.29 20">
+    <g id="Layer_2" fill='currentColor' data-name="Layer 2">
+        <g id="Layer_12" fill='currentColor' data-name="Layer 12">
+            <g fill='currentColor' id="layer_1">
+                <path fill='currentColor' d="M20.71,8a5.26,5.26,0,0,0-3.42,1.28A6.16,6.16,0,0,1,19.43,14c0,2.41,0,4.47-2.14,5.43a8.39,8.39,0,0,0,3.42.57c5.58,0,5.58-2.69,5.58-6A5.8,5.8,0,0,0,20.71,8Z"/>
+                <path fill='currentColor' d="M6.86,14A6.16,6.16,0,0,1,9,9.28,5.29,5.29,0,0,0,5.57,8,5.8,5.8,0,0,0,0,14c0,3.31,0,6,5.57,6A8.41,8.41,0,0,0,9,19.43C6.87,18.47,6.86,16.41,6.86,14Z"/>
+                <path fill='currentColor' d="M16.57,9.28a5.24,5.24,0,0,0-6.86,0A6.16,6.16,0,0,0,7.57,14c0,2.41,0,4.47,2.14,5.43a8.47,8.47,0,0,0,3.43.57,8.41,8.41,0,0,0,3.43-.57c2.13-1,2.14-3,2.14-5.43A6.16,6.16,0,0,0,16.57,9.28Z"/>
+                <circle cx="21.5" cy="3.5" r="3.5" fill='currentColor'/>
+                <circle cx="13.5" cy="3.5" r="3.5" fill='currentColor'/>
+                <circle cx="5.5" cy="3.5" r="3.5" fill='currentColor'/>
+            </g>
+        </g>
+    </g>
+</svg>
