@@ -35,7 +35,7 @@ input::placeholder {
 
 @layer components {
     .alert {
-        @apply flex flex-col self-stretch border-2 bg-transparent p-2 rounded-lg;
+        @apply flex flex-row self-stretch justify-between items-center border-2 bg-transparent p-2 rounded-lg gap-3;
     }
     
     .alert li {

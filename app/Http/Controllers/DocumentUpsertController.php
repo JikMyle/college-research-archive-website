@@ -156,7 +156,7 @@ class DocumentUpsertController extends Controller
         Note: Ensure that public directory is linked to storage
      */
     private function generateThumbnail(string $document, string $id) {
-        $publicPath = public_path('storage//thumbnails//');
+        $publicPath = public_path('storage/thumbnails/');
         
         if(!file_exists($publicPath)) { // Creates thumbnail directory if it does not exist
             Storage::disk('public')->makeDirectory('thumbnails');

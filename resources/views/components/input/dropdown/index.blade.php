@@ -32,7 +32,7 @@
         @endif
 
         <select {{$dropdown->attributes->except('class')->merge([
-                'class' => 'w-full h-full p-2 text-base text-left bg-transparent rounded-xl focus:outline-none',
+                'class' => 'w-full h-full px-2 text-base text-left bg-transparent rounded-xl focus:outline-none',
                 'name' => $name,
             ])}}>
 

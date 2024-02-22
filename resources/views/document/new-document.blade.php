@@ -82,7 +82,7 @@
                 </x-input.dropdown>
 
                 <input 
-                    class="flex w-full border-none !p-0 file:shadow-sm file:mr-4 file:rounded-xl file:border-none h-auto file:button"
+                    class="flex w-full border-none !p-0 file:hover:!drop-shadow-none file:shadow-sm file:mr-4 file:rounded-xl file:border-none h-auto file:button"
                     id='upload_file'
                     name='upload_file'
                     type='file'

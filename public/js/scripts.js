@@ -63,7 +63,10 @@ $(document).ready(function(){
 
         label.attr('aria-hidden', true);
     });
-    
+
+    $('button[aria-label="Close"]').on('click', function() {
+        $(this).parent().remove();
+    });
     
     /**
      * Updates buttons and checkboxes when a checkbox value changes

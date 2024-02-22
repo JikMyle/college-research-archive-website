@@ -55,7 +55,7 @@ Route::middleware('guest')->group(function() {
 /*
  *  Routes in the group below requires the user to be logged in
  */
-Route::middleware(['auth', 'prevent-back-history'])->group(function() {
+Route::middleware(['auth'])->group(function() {
     Route::get('/', function () {
         return redirect('library');
     });
