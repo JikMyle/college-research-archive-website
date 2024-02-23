@@ -1,6 +1,6 @@
 <x-shared.layout title='Edit Document'>
     <div class="flex w-full h-auto flex-col lg:flex-row flex-wrap items-center lg:items-start lg:justify-evenly gap-7 mt-auto mb-16 lg:my-auto">
-        <x-shared.logo class="justify-center w-full mb-4"></x-logo>
+        <x-shared.logo class="justify-center w-full mt-4"></x-logo>
 
         <div class="flex w-4/5 lg:hidden border-b-2 border-input-border-light dark:border-input-border-dark"></div>
 
@@ -57,6 +57,7 @@
                     label='Date Submitted: '>
 
                     <x-slot:input
+                        class="dark:scheme-dark"
                         id='date_submitted'
                         name='date_submitted'
                         value='{{ $document->date_submitted }}'
@@ -95,7 +96,7 @@
                 </x-input.dropdown>
 
                 <input 
-                    class="flex w-full border-none !p-0 file:hover:!drop-shadow-none file:shadow-sm file:mr-4 file:rounded-xl file:border-none h-auto file:button"
+                    class="flex w-full border-none text-text-light dark:text-text-dark !p-0 file:hover:!drop-shadow-none file:shadow-sm file:mr-4 file:rounded-xl file:border-none h-auto file:button"
                     id='upload_file'
                     name='upload_file'
                     type='file'>
@@ -188,7 +189,7 @@
                 </div>
             </x-input.form>
 
-            <div class="flex w-full h-auto lg:w-auto lg:self-stretch border-b-2 lg:border-b-2 lg:border-r-2 border-input-border-light dark:border-input-border-dark"></div>
+            <div class="flex w-full h-auto lg:self-stretch border-b-2 lg:border-b-2 lg:border-r-2 border-input-border-light dark:border-input-border-dark"></div>
 
             <x-input.form
                 class="w-full"

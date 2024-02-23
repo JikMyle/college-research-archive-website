@@ -260,8 +260,6 @@ function createAuthorRow(index) {
 function removeAuthor(id) {
     let authorRow = $('#' + id);
 
-    console.log('attempted to delete: ' + authorRow.prop('id'));
-
     if(!checkIfLastAuthor()) {
         authorRow.remove();
         refreshAuthors();

@@ -41,7 +41,8 @@
                     label='Date Submitted: '
                     :alwaysShowLabel='true'>
 
-                    <x-slot:input 
+                    <x-slot:input
+                        class="dark:scheme-dark" 
                         id='date_submitted'
                         name='date_submitted'
                         type='date'
@@ -82,7 +83,7 @@
                 </x-input.dropdown>
 
                 <input 
-                    class="flex w-full border-none !p-0 file:hover:!drop-shadow-none file:shadow-sm file:mr-4 file:rounded-xl file:border-none h-auto file:button"
+                    class="flex w-full border-none !p-0 text-text-light dark:text-text-dark file:hover:!drop-shadow-none file:shadow-sm file:mr-4 file:rounded-xl file:border-none h-auto file:button"
                     id='upload_file'
                     name='upload_file'
                     type='file'
@@ -136,8 +137,8 @@
                                 <td>
                                     <x-input.button
                                         class="button-delete"
+                                        type='button'
                                         :icon='asset("icons/icons.svg#gg-close")'
-                                        iconAlt='close icon'
                                         data-author='author{{ $i }}'>
                                     </x-input.button>
                                 </td>
@@ -172,7 +173,7 @@
                                 <x-input.button
                                     class="button-delete"
                                     :icon='asset("icons/icons.svg#gg-close")'
-                                    iconAlt='close icon'
+                                    type='button'
                                     data-author='author0'>
                                 </x-input.button>
                             </td>
