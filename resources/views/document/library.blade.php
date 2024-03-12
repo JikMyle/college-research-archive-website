@@ -62,7 +62,7 @@
         </div>
 
         {{-- Document Card Grid --}}
-        <div class="grid grid-cols-4 xl:grid-cols-5 gap-8 items-center">
+        <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
             @foreach ($results as $document)
                 <x-document-card :document='$document'/>
             @endforeach

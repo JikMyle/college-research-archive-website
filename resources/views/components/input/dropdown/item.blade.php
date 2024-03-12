@@ -3,8 +3,11 @@
     'value',
 ])
 
-<option {{(old($name) == $value) ? 'selected' : ''}} 
-    {{$attributes->merge(['class' => 'text-text-light'])}}>
+<option {{((old($name) == $value) || Request::get($name) == $value) ? 'selected' : ''}} 
+    {{$attributes->merge([
+        'class' => 'text-text-light',
+        'value' => '',
+    ])}}>
 
     {{ $slot }}
 </option>

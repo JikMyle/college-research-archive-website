@@ -8,8 +8,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @vite('resources/css/app.css')
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;800&display=swap"/>
     <title>{{ $title }}</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
 </head>
 <body class="flex flex-col h-screen">
     <header class="flex flex-col z-10 w-full items-center top-0 left-0 bg-white dark:bg-transparent">
@@ -29,8 +31,7 @@
             alt="dark mode background">
     </div>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;800&display=swap"/>
-    <script src="{{asset('js/jquery-3.7.1.js')}}"></script>
-    @vite('public/js/scripts.js')
+    <script src="{{ asset('js/jquery-3.7.1.js') }}"></script>
+    @vite('resources/js/app.js')
 </body>
 </html>

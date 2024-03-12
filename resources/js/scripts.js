@@ -36,7 +36,47 @@ $(document).ready(function(){
         $(this).siblings('input[name="author_id"]').prop('checked', true);
         form.submit();
     });
-    
+
+    $('input').each(function() {
+        var label = checkForHiddenLabel($(this));
+
+        if(!label) return;
+
+        if($(this).prop('value') != '') label.attr('aria-hidden', false);
+        else label.attr('aria-hidden', true);
+    });
+
+    $('input').on('focus', function() {
+        var label = $('label[for="' + $(this).prop('name') + '"]').parent();
+
+        if(label.length == 0) return;
+
+        label.attr('aria-hidden', false);
+    });
+
+    $('input').on('focusout', function() {
+        var label = $('label[for="' + $(this).prop('name') + '"]').parent();
+
+        if(label.length == 0) return;
+
+        if($(this).prop('value') != '') return;
+
+        label.attr('aria-hidden', true);
+    });
+
+    $('button[aria-label="Close"]').on('click', function() {
+        $(this).parent().remove();
+    });
+
+    $('*[data-activate-on="hover"]').on('mouseenter', function() {
+        checkAriaStates($(this));
+        $("#" + $(this).attr('aria-controls')).attr('aria-hidden', false);
+    })
+
+    $('*[data-activate-on="hover"]').on('mouseleave', function() {
+        checkAriaStates($(this));
+        $("#" + $(this).attr('aria-controls')).attr('aria-hidden', true);
+    })
     
     /**
      * Updates buttons and checkboxes when a checkbox value changes
@@ -99,6 +139,19 @@ function setTheme(theme) {
     $('html').addClass(theme);
 
     localStorage.theme = theme;
+}
+
+function checkAriaStates(element) {
+    if($(this).attr('aria-expanded') == 'false') $(this).attr('aria-expanded', true);
+    else if($(this).attr('aria-expanded') == 'true') $(this).attr('aria-expanded', false);
+}
+
+function checkForHiddenLabel(input) {
+    var label = $('label[for="' + input.prop('name') + '"]').parent();
+
+    if(label.length == 0)  return null;
+
+    return label;
 }
 
 /**
@@ -170,9 +223,9 @@ function createAuthorRow(index) {
                 (index + 1) +
             '</td>' +
             '<td>' +
-                '<div class="flex flex-row justify-end gap-3 !justify-center w-11/12">' +
+                '<div class="flex flex-row justify-end gap-3 px-2">' +
                     '<input ' +
-                        'class="author-first-name w-80 h-10 p-2 text-base text-left border-input-border-light dark:border-input-border-dark dark:bg-transparent dark:text-text-dark border-2 rounded-xl  dark:placeholder:text-text-dark !border-0 !border-b-2 !rounded-none flex-grow"' +
+                        'class="author-first-name w-80 h-10 p-2 text-base text-left border-input-border-light dark:border-input-border-dark dark:bg-transparent dark:text-text-dark border-2 rounded-xl  dark:placeholder:text-text-dark !border-0 !border-b-2 !rounded-none w-full"' +
                         'type="text"' + 
                         'name="authors[' + index + '][first_name]"' + 
                         'placeholder="First Name"' + 
@@ -180,9 +233,9 @@ function createAuthorRow(index) {
                 '</div>' +                      
             '</td>' +
             '<td>' +
-                '<div class="flex flex-row justify-end gap-3 !justify-center w-11/12">' +
+                '<div class="flex flex-row justify-end gap-3 px-2">' +
                     '<input ' +
-                        'class="author-last-name w-80 h-10 p-2 text-base text-left border-input-border-light dark:border-input-border-dark dark:bg-transparent dark:text-text-dark border-2 rounded-xl  dark:placeholder:text-text-dark !border-0 !border-b-2 !rounded-none flex-grow"' +
+                        'class="author-last-name w-80 h-10 p-2 text-base text-left border-input-border-light dark:border-input-border-dark dark:bg-transparent dark:text-text-dark border-2 rounded-xl  dark:placeholder:text-text-dark !border-0 !border-b-2 !rounded-none w-full"' +
                         'type="text"' +
                         'name="authors[' + index + '][last_name]"' +
                         'placeholder="Last Name"' +
@@ -206,8 +259,6 @@ function createAuthorRow(index) {
 
 function removeAuthor(id) {
     let authorRow = $('#' + id);
-
-    console.log('attempted to delete: ' + authorRow.prop('id'));
 
     if(!checkIfLastAuthor()) {
         authorRow.remove();

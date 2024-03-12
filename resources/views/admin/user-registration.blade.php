@@ -1,52 +1,66 @@
 <x-shared.layout title='User Registration'>
     
-    <div class="flex flex-col md:flex-row items-center justify-center md:justify-evenly flex-grow gap-10">
-        <div class='flex'>
-            <p class="text-5xl font-bold text-center md:text-left text-text-light dark:text-text-dark">
+    <div class="flex m-auto w-full flex-col lg:flex-row items-center justify-center lg:justify-evenly">
+        <div class='flex relative my-16'>
+            <p class="z-[1] text-5xl font-bold text-center md:text-left text-text-light dark:text-text-dark">
                 Register new user
             </p>
+
+            <img 
+                class="dark:hidden absolute -z-[1] -translate-y-1/2 scale-75 lg:scale-125"
+                src="{{ asset('images/yellow-stain.svg')}}" 
+                alt="">
         </div>
     
-        <x-input.form :showLogo='true' action='{{route("admin.users")}}' method='POST'>
-            <div class="flex flex-col gap-3">
-                <x-input.text-field>
+        <x-input.form 
+            class="z-[2] my-16"
+            :showLogo='true' 
+            action='{{route("admin.users")}}' 
+            method='POST'>
+
+            <div class="flex flex-col gap-4">
+                <x-input.text-field class='w-80' label='First Name'>
                     <x-slot:input 
                         id='first_name'
                         name='first_name'
                         placeholder='First name'
-                        required>
+                        required
+                        autocomplete>
                     </x-slot:input>
                 </x-input.text-field>
     
-                <x-input.text-field>
+                <x-input.text-field class='w-80' label='Last Name'>
                     <x-slot:input 
                         id='last_name'
                         name='last_name'
                         placeholder='Last name'
-                        required>
+                        required
+                        autocomplete>
                     </x-slot:input>
                 </x-input.text-field>
 
-                <x-input.text-field>
+                <x-input.text-field class='w-80' label='Username'>
                     <x-slot:input 
                         id='username'
                         name='username'
                         placeholder='Username'
-                        required>
+                        required
+                        autocomplete>
                     </x-slot:input>
                 </x-input.text-field>
 
-                <x-input.text-field>
+                <x-input.text-field class='w-80' label='Email'>
                     <x-slot:input 
                         id='email'
                         name='email'
                         placeholder='Email Address'
                         type='email'
-                        required>
+                        required
+                        autocomplete>
                     </x-slot:input>
                 </x-input.text-field>
 
-                <x-input.text-field>
+                <x-input.text-field class='w-80' label='Password'>
                     <x-slot:input 
                         id='password'
                         name='password'
@@ -56,7 +70,7 @@
                     </x-slot:input>
                 </x-input.text-field>
 
-                <x-input.text-field>
+                <x-input.text-field class='w-80' label='Confirm Password'>
                     <x-slot:input 
                         id='password_confirmation'
                         name='password_confirmation'
@@ -66,7 +80,7 @@
                     </x-slot:input>
                 </x-input.text-field>
 
-                <x-input.dropdown label='Access Level:' name='access_level'>
+                <x-input.dropdown label='Access Level:' :labelOnSide='true' name='access_level'>
                     <x-slot:dropdown id="access_level" class="flex-grow">
                         <x-input.dropdown.item>
                             ...

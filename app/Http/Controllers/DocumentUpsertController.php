@@ -112,12 +112,16 @@ class DocumentUpsertController extends Controller
      * Dettaches author from document in the database
      */
     public function removeAuthor(DocumentRequest $request, Document $document) {
+        $updated['updated'] = 'author';
+
         $author = Author::find($request->author_id);
         $authorName = $author->first_name . ' ' . $author->last_name;
+
+        if($document->authors()->count() == 1) return back()
+            ->withErrors(['Document must have at least 1 author!'])
+            ->with($updated);
         
         $document->authors()->detach($author->id);
-
-        $updated['updated'] = 'author';
         $message['success'] = 'Author ' . $authorName . ' successfully removed from document.';
 
         return back()->with($message)->with($updated);
@@ -152,7 +156,7 @@ class DocumentUpsertController extends Controller
         Note: Ensure that public directory is linked to storage
      */
     private function generateThumbnail(string $document, string $id) {
-        $publicPath = public_path('storage//thumbnails//');
+        $publicPath = public_path('storage/thumbnails/');
         
         if(!file_exists($publicPath)) { // Creates thumbnail directory if it does not exist
             Storage::disk('public')->makeDirectory('thumbnails');

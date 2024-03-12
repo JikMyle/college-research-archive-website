@@ -1,43 +1,62 @@
 <nav class="flex flex-row w-full justify-between items-center">
-    <x-shared.top-nav-bar.item-group>
+    <x-shared.top-nav-bar.item-group class="px-3">
         @auth
             <x-shared.top-nav-bar.item>
-                <a class="h-full" href="{{ route('library') }}">
-                    <img 
-                        class="dark:hidden h-full hover:scale-110 transition duration-75"
-                        src="{{asset('images/library-link-light.png')}}" 
-                        alt="library link icon">
-                    <img 
-                        class="hidden dark:flex h-full hover:scale-110 transition duration-75"
-                        src="{{asset('images/library-link-dark.png')}}" 
-                        alt="library link icon">
+                <a class="h-full flex flex-row items-center gap-2" href="{{ route('library') }}">
+                    <svg 
+                        class="h-8 w-8 text-text-light dark:text-text-dark"
+                        id="libaryTopNavIcon"
+                        aria-label='Library'
+                        aria-controls='libraryTopNavLabel'
+                        data-activate-on='hover'>
+
+                        <use href='{{ asset("icons/library.svg#icon")}}'></use>
+                    </svg>
+                    <p 
+                        class="leading-4 text-sm text-text-light dark:text-text-dark transition duration-150 pointer-events-none aria-hidden:w-0 aria-hidden:-translate-x-4 aria-hidden:opacity-0"
+                        id="libraryTopNavLabel"
+                        aria-hidden='true'>
+                        Library
+                    </p>
                 </a>
             </x-shared.top-nav-bar.item>
 
             @if (Auth::user() && Auth::user()->is_admin)
                 <x-shared.top-nav-bar.item>
-                    <a class='h-full' href="{{ route('admin.documents') }}">
-                        <img 
-                            class="dark:hidden h-full hover:scale-110 transition duration-75"
-                            src="{{asset('images/documentDb-link-light.png')}}" 
-                            alt="document database link icon">
-                        <img 
-                            class="hidden dark:flex h-full hover:scale-110 transition duration-75"
-                            src="{{asset('images/documentDb-link-dark.png')}}" 
-                            alt="document database link icon">
+                    <a class='h-full flex flex-row items-center gap-2' href="{{ route('admin.documents') }}">
+                        <svg class="h-8 w-8 text-text-light dark:text-text-dark"
+                            id="documentsTopNavIcon"
+                            aria-label='Document Database'
+                            aria-controls='documentsTopNavLabel'
+                            data-activate-on='hover'>
+
+                            <use href='{{ asset("icons/documents.svg#icon")}}'></use>
+                        </svg>
+                        <p 
+                            class="leading-4 text-sm text-text-light dark:text-text-dark transition duration-150 pointer-events-none aria-hidden:w-0 aria-hidden:-translate-x-4 aria-hidden:opacity-0"
+                            id="documentsTopNavLabel"
+                            aria-hidden='true'>
+                            Document<br>Database
+                        </p>
                     </a>
                 </x-shared.top-nav-bar.item>
 
                 <x-shared.top-nav-bar.item>
-                    <a class="h-full" href="{{ route('admin.users') }}">
-                        <img 
-                            class="dark:hidden w-auto h-full hover:scale-110 transition duration-75"
-                            src="{{asset('images/userDb-link-light.png')}}" 
-                            alt="user database link icon">
-                        <img 
-                            class="hidden dark:flex h-full hover:scale-110 transition duration-75"
-                            src="{{asset('images/userDb-link-dark.png')}}" 
-                            alt="user database link icon">
+                    <a class="h-full flex flex-row items-center gap-2" href="{{ route('admin.users') }}">
+                        <svg class="h-8 w-8 text-text-light dark:text-text-dark"
+                            id="userTopNavIcon"
+                            aria-label='User Database'
+                            aria-controls='usersTopNavLabel'
+                            data-activate-on='hover'>
+
+                            <use href='{{ asset("icons/users.svg#icon")}}'></use>
+                        </svg>
+                        <duration-150
+                            class="leading-4 text-sm text-text-light dark:text-text-dark transition duration-150 pointer-events-none aria-hidden:w-0 aria-hidden:-translate-x-4 aria-hidden:opacity-0"
+                            id="usersTopNavLabel"
+                            aria-hidden='true'>
+                            User<br>Database
+                        </p>
                     </a>
                 </x-shared.top-nav-bar.item>
             @endif
@@ -46,20 +65,21 @@
 
     <x-shared.top-nav-bar.item-group>
         <x-shared.top-nav-bar.item>
-            <x-input.button
-                :icon='asset("icons/icons.svg#gg-sun")'
-                iconAlt='Light mode icon'
-                class="hidden bg-none dark:flex !p-0 scale-150 !bg-transparent text-text-light dark:text-text-dark hover:rotate-12 transition active:shadow-none"
-                id='lightModeBtn'
-                data-theme=''>
-            </x-input.button>
-            <x-input.button
-                :icon='asset("icons/icons.svg#gg-moon")'
-                iconAlt='Light mode icon'
-                class="flex bg-none dark:hidden !p-0 scale-150 !bg-transparent text-text-light dark:text-text-dark hover:rotate-12 transition active:shadow-none"
-                id='nightModeBtn'
-                data-theme='dark'>
-            </x-input.button>
+            <button id="lightModeBtn" data-theme=''>
+                <svg class="h-7 w-7 !p-0 !text-text-dark button hidden bg-none dark:flex !bg-transparent hover:rotate-12 transition active:shadow-none"
+                    aria-label='Dark Mode Off'>
+
+                    <use width='100%' height='100%' href='{{ asset("icons/icons.svg#gg-sun")}}'></use>
+                </svg>
+            </button>
+
+            <button id="nightModeBtn" data-theme='dark'>
+                <svg class="h-7 w-7 !p-0 text-text-light button dark:hidden bg-none !bg-transparent hover:rotate-12 transition active:shadow-none"
+                    aria-label='Dark Mode On'>
+
+                    <use width='100%' height='100%' href='{{ asset("icons/icons.svg#gg-moon")}}'></use>
+                </svg>
+            </button>
         </x-shared.top-nav-bar.item>
 
         <x-shared.top-nav-bar.item>
@@ -67,7 +87,7 @@
                 <x-slot:button
                     :icon='asset("icons/icons.svg#gg-menu")'
                     iconAlt='navigation bar dropdown menu button'
-                    class="scale-150 bg-none !bg-transparent text-text-light dark:text-text-dark"
+                    class="scale-125 p-1 bg-none !bg-transparent text-text-light dark:text-text-dark"
                     aria-expanded='false'
                     aria-controls='topNavMenu'>
                 </x-slot:button>

@@ -1,17 +1,27 @@
 <x-shared.layout title='CCIS Archives - Sign In'>
 
-<div class="flex flex-col md:flex-row items-center justify-center md:justify-evenly flex-grow gap-10">
-    <div class='flex'>
-        <p class="text-5xl font-bold text-center md:text-left text-text-light dark:text-text-dark">
+<div class="flex m-auto w-full flex-col lg:flex-row items-center justify-center lg:justify-evenly">
+    <div class='flex relative my-16'>
+        <p class="z-[1] text-5xl font-bold text-center md:text-left text-text-light dark:text-text-dark">
             Explore Research <br> 
             Papers and Capstones <br>
             Online!
         </p>
+
+        <img 
+            class="dark:hidden absolute -z-[1] -translate-y-1/2 scale-75 lg:scale-125"
+            src="{{ asset('images/yellow-stain.svg')}}" 
+            alt="">
     </div>
 
-    <x-input.form :showLogo='true' action='' method='POST'>
-        <div class="flex flex-col gap-3">
-            <x-input.text-field>
+    <x-input.form 
+        :showLogo='true' 
+        action='' 
+        method='POST' 
+        class="z-[2] my-16">
+
+        <div class="flex flex-col gap-4">
+            <x-input.text-field class="w-80" label='Username or Email'>
                 <x-slot:input 
                     id='email'
                     name='email'
@@ -21,7 +31,7 @@
                 </x-slot:input>
             </x-input.text-field>
 
-            <x-input.text-field>
+            <x-input.text-field class="w-80" label='Password'>
                 <x-slot:input 
                     id='password'
                     name='password'
@@ -31,7 +41,7 @@
                 </x-slot:input>
             </x-input.text-field>
         
-            <label class="flex flex-row items-center text-base self-center text-placeholder dark:text-text-dark">
+            <label class="flex flex-row items-center text-base self-center text-placeholder dark:text-text-dark cursor-pointer">
                 <input
                     class='w-4 h-4 mr-2 border-input-border-light dark:border-input-border-dark cursor-pointer'
                     name="remember"
