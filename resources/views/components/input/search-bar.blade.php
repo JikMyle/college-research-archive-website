@@ -49,7 +49,10 @@
             class="dark:scheme-dark"
             id='dateFrom'
             name='dateFrom'
-            type='date'
+            type='number'
+            min=1900
+            step=1
+            placeholder="2000"
             value="{{Request::get('dateFrom')}}">
         </x-slot:input>
     </x-input.text-field>
@@ -63,7 +66,10 @@
             class="dark:scheme-dark"
             id='dateTo'
             name='dateTo'
-            type='date'
+            type='number'
+            min=1900
+            step=1
+            placeholder="2000"
             value="{{Request::get('dateTo')}}">
         </x-slot:input>
     </x-input.text-field>
@@ -177,12 +183,12 @@
                     Title (Z-A)
                 </x-input.dropdown.item>
 
-                <x-input.dropdown.item value='date_submitted asc'>
-                    Date Submitted (Oldest)
+                <x-input.dropdown.item value='year_submitted asc'>
+                    Year Submitted (Oldest)
                 </x-input.dropdown.item>
 
-                <x-input.dropdown.item value='date_submitted desc'>
-                    Date Submitted (Newest)
+                <x-input.dropdown.item value='year_submitted desc'>
+                    Year Submitted (Newest)
                 </x-input.dropdown.item>
             @endif
         </x-slot:dropdown>

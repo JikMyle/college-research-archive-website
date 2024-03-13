@@ -53,7 +53,7 @@
             </div>
 
             <p class="text-sm text-text-light dark:text-sub-text algin-self-end text-ellipsis">
-                {{ $document->date_submitted }}
+                {{ $document->year_submitted }}
             </p>
         </div>
     </div>

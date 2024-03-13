@@ -53,15 +53,18 @@
                 </x-input.text-field>
 
                 <x-input.text-field
-                    class="w-fit h-11" 
-                    label='Date Submitted: '>
+                    class="basis-2/5 h-11" 
+                    label='Year Submitted: '>
 
                     <x-slot:input
                         class="dark:scheme-dark"
                         id='date_submitted'
                         name='date_submitted'
-                        value='{{ $document->date_submitted }}'
-                        type='date'
+                        value='{{ $document->year_submitted }}'
+                        type='number'
+                        min=1900
+                        step=1
+                        placeholder='ex. 2000'
                         required>
                     </x-slot:input>
                 </x-input.text-field>

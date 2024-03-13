@@ -23,7 +23,7 @@ class DocumentFactory extends Factory
             'program' => 'bs' . $programs[array_rand($programs)],
             'excerpt' => fake()->paragraph(),
             'file_name' => 'no-file-test-string',
-            'date_submitted' => fake()->date(),
+            'year_submitted' => fake()->year(),
         ];
     }
 }

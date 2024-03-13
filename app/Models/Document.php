@@ -42,10 +42,10 @@ class Document extends Model
 
     public function scopeByDate($query, ?string $dateFrom, ?string $dateTo) {
         $query->when($dateFrom, function($query, string $dateFrom) {
-                $query->whereDate('date_submitted', '<=', $dateFrom);
+                $query->where('year_submitted', '<=', $dateFrom);
             })
             ->when($dateTo, function($query, string $dateTo) {
-                $query->whereDate('date_submitted', '>=', $dateTo);
+                $query->where('year_submitted', '>=', $dateTo);
             });
     }
 

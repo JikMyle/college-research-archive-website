@@ -99,7 +99,7 @@ Route::middleware(['auth'])->group(function() {
                 Route::post('users', 'registerUser');
                 Route::delete('users/delete', 'deleteUser')->name('deleteUser');
                 Route::patch('users/restore', 'restoreUser')->name('restoreUser');
-                Route::patch('users/update-access', 'updateAccess')->name('updateAccess');
+                // Route::patch('users/update-access', 'updateAccess')->name('updateAccess');
 
                 Route::delete('documents/delete', 'deleteDocument')->name('deleteDocument');
                 Route::patch('documents/restore', 'restoreDocument')->name('restoreDocument');
