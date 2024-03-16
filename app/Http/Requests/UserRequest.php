@@ -9,6 +9,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
 {
+    protected $errorBag = 'userInfo';
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -28,14 +30,15 @@ class UserRequest extends FormRequest
         $rules = [
             'username' => 'required|unique:users|max:24',
             'password' => ['required', 'confirmed', Password::min(8)],
-            'email' => 'required|email|unique:users',
-            'access_level' => 'required',
+            // 'email' => 'required|email|unique:users',
+            // 'access_level' => 'required',
             'first_name' => 'required|max:50',
             'last_name' => 'required|max:50',
         ];
 
         // Rules for when user updates their account info
         if(isset($this->btnUpdateInfo)) {
+
             $rules['username'] = [
                 'required',
                 Rule::unique('users')->ignore($this->user()->id),    // Ignores user's own model when checking if unique
@@ -55,6 +58,8 @@ class UserRequest extends FormRequest
 
         // Rules for when user updates their password
         if(isset($this->btnUpdatePassword)) {
+            $this->errorBag = 'userPassword';
+
             $rules = [
                 'password' => ['required'],
                 'new_password' => ['required', 'confirmed', Password::min(8)],

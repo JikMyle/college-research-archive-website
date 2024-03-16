@@ -1,3 +1,25 @@
+
+@php
+    $dateText = '';
+    $keywordPlaceHolder = '';
+    $route = Route::current()->getName();
+
+    switch ($route) {
+        case 'admin.users':
+            $dateText = 'Registered';
+            $keywordPlaceHolder = 'Search for id, username, or name...';
+            break;
+        
+        case('admin.documents' || 'library'):
+            $dateText = 'Submitted';
+            $keywordPlaceHolder = 'Search for title, author, keywords...';
+            break;
+
+        default:
+            break;
+    }
+@endphp
+
 <form 
     class="flex flex-row align-center justify-between w-3/5 flex-wrap gap-y-4 gap-x-2"
     id="searchBar"
@@ -21,24 +43,6 @@
             iconAlt='search icon'>
         </x-input.button>
     </div>
-
-    @php
-        $dateText = '';
-        $route = Route::current()->getName();
-
-        switch ($route) {
-            case 'admin.users':
-                $dateText = 'Registered';
-                break;
-            
-            case('admin.documents' || 'library'):
-                $dateText = 'Submitted';
-                break;
-
-            default:
-                break;
-        }
-    @endphp
 
     <x-input.text-field 
         class="flex-grow h-9 basis-5/12 md:basis-3/12 lg:basis-1/5"
@@ -117,7 +121,7 @@
                 </x-input.dropdown.item>
 
                 <x-input.dropdown.item value='0'>
-                    Student
+                   Regular
                 </x-input.dropdown.item>
 
                 <x-input.dropdown.item value='1'>
@@ -128,7 +132,7 @@
     @endif
 
     <x-input.dropdown 
-        class="flex-grow h-9 basis-5/12 md:basis-3/12 lg:basis-1/5"
+        class="flex-grow h-9 basis-5/12 md:basis-3/12 lg:basis-3/5"
         label='Sort By' 
         :alwaysShowLabel='true' 
         name='sortBy'>

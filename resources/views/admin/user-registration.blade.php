@@ -18,7 +18,27 @@
             action='{{route("admin.users")}}' 
             method='POST'>
 
+            <x-slot:alerts>
+                @if ($errors->userInfo->any())
+                    <x-shared.alert 
+                        type='error'
+                        :messages='$errors->userInfo->all()'
+                        class="basis-3/5 flex-grow"
+                    />
+                @endif
+            </x-slot:alerts>
+
             <div class="flex flex-col gap-4">
+                <x-input.text-field class='w-80' label='Username'>
+                    <x-slot:input 
+                        id='username'
+                        name='username'
+                        placeholder='Username'
+                        required
+                        autocomplete>
+                    </x-slot:input>
+                </x-input.text-field>
+
                 <x-input.text-field class='w-80' label='First Name'>
                     <x-slot:input 
                         id='first_name'
@@ -39,17 +59,7 @@
                     </x-slot:input>
                 </x-input.text-field>
 
-                <x-input.text-field class='w-80' label='Username'>
-                    <x-slot:input 
-                        id='username'
-                        name='username'
-                        placeholder='Username'
-                        required
-                        autocomplete>
-                    </x-slot:input>
-                </x-input.text-field>
-
-                <x-input.text-field class='w-80' label='Email'>
+                {{-- <x-input.text-field class='w-80' label='Email'>
                     <x-slot:input 
                         id='email'
                         name='email'
@@ -58,7 +68,7 @@
                         required
                         autocomplete>
                     </x-slot:input>
-                </x-input.text-field>
+                </x-input.text-field> --}}
 
                 <x-input.text-field class='w-80' label='Password'>
                     <x-slot:input 
@@ -80,7 +90,7 @@
                     </x-slot:input>
                 </x-input.text-field>
 
-                <x-input.dropdown label='Access Level:' :labelOnSide='true' name='access_level'>
+                {{-- <x-input.dropdown label='Access Level:' :labelOnSide='true' name='access_level'>
                     <x-slot:dropdown id="access_level" class="flex-grow">
                         <x-input.dropdown.item>
                             ...
@@ -94,7 +104,7 @@
                             Admin
                         </x-input.dropdown.item>
                     </x-slot:dropdown>
-                </x-input.dropdown>
+                </x-input.dropdown> --}}
             </div>
 
             <div class="flex flex-row justify-between gap-6">

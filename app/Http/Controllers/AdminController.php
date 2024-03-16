@@ -32,14 +32,14 @@ class AdminController extends Controller
         $user = new User;
         $user->username = $validated['username'];
         $user->password = $validated['password'];
-        $user->email = $validated['email'];
+        // $user->email = $validated['email'];
         $user->is_admin = false;
         // $user->is_admin = $validated['access_level'];
         $user->first_name = ucwords($validated['first_name']);
         $user->last_name = ucwords($validated['last_name']);
         $user->save();
 
-        event(new Registered($user));   // Sends verification email to new user's email
+        // event(new Registered($user));   // Sends verification email to new user's email
 
         return redirect('admin/users')->with('success', 'User successfully registered.');
     }
@@ -75,6 +75,10 @@ class AdminController extends Controller
         }
 
         $user = User::withTrashed()->find($id);
+
+        if($user->is_admin) {
+            return ['error' => 'Warning: Cannot delete an admin!'];
+        }
 
         if($user->deleted_at) {
             $user->forceDelete();   // Permanently deletes user if they were soft-deleted previously

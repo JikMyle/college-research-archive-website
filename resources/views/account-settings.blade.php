@@ -19,10 +19,10 @@
             </x-slot:header>
 
             <x-slot:alerts>
-                @if ($errors->any() && session('updated') == 'info')
+                @if ($errors->userInfo->any())
                     <x-shared.alert 
                         type='error'
-                        :messages='$errors->all()'
+                        :messages='$errors->userInfo->all()'
                         class="basis-3/5 flex-grow"
                     />
 
@@ -119,10 +119,10 @@
             </x-slot:header>
 
             <x-slot:alerts>
-                @if ($errors->hasAny(['new_password', 'password']) || ($errors->any() && session('updated') == 'password'))
+                @if ($errors->userPassword->any())
                     <x-shared.alert 
                         type='error'
-                        :messages='$errors->all()'
+                        :messages='$errors->userPassword->all()'
                         class="basis-3/5 flex-grow"
                     />
 
