@@ -32,13 +32,14 @@ class AdminController extends Controller
         $user = new User;
         $user->username = $validated['username'];
         $user->password = $validated['password'];
-        $user->email = $validated['email'];
-        $user->is_admin = $validated['access_level'];
+        // $user->email = $validated['email'];
+        $user->is_admin = false;
+        // $user->is_admin = $validated['access_level'];
         $user->first_name = ucwords($validated['first_name']);
         $user->last_name = ucwords($validated['last_name']);
         $user->save();
 
-        event(new Registered($user));   // Sends verification email to new user's email
+        // event(new Registered($user));   // Sends verification email to new user's email
 
         return redirect('admin/users')->with('success', 'User successfully registered.');
     }
@@ -74,6 +75,10 @@ class AdminController extends Controller
         }
 
         $user = User::withTrashed()->find($id);
+
+        if($user->is_admin) {
+            return ['error' => 'Warning: Cannot delete an admin!'];
+        }
 
         if($user->deleted_at) {
             $user->forceDelete();   // Permanently deletes user if they were soft-deleted previously
@@ -123,28 +128,28 @@ class AdminController extends Controller
     /**
      * Changes the access level of a user in the database
      */
-    public function updateAccess(Request $request) {
-        $message = ['error' => 'Warning: Cannot change own account\'s access level'];
+    // public function updateAccess(Request $request) {
+    //     $message = ['error' => 'Warning: Cannot change own account\'s access level'];
 
-        $user = User::find($request->userIds[0]);
+    //     $user = User::find($request->userIds[0]);
 
-        if($user && $request->user()->id == $user->id) {
-            return back()->withErrors([$message]);
-        }
+    //     if($user && $request->user()->id == $user->id) {
+    //         return back()->withErrors([$message]);
+    //     }
 
-        if($request->level == 1) {
-            $user->is_admin = true;
-            $user->save();
-            $message = ['success' => 'User ' . $user->username . ' successfully set to Administrator'];
-        }
-        else {
-            $user->is_admin = false;
-            $user->save();
-            $message = ['success' => 'User ' . $user->username . ' successfully set to Student'];
-        }
+    //     if($request->level == 1) {
+    //         $user->is_admin = true;
+    //         $user->save();
+    //         $message = ['success' => 'User ' . $user->username . ' successfully set to Administrator'];
+    //     }
+    //     else {
+    //         $user->is_admin = false;
+    //         $user->save();
+    //         $message = ['success' => 'User ' . $user->username . ' successfully set to Student'];
+    //     }
 
-        return back()->with($message);
-    }
+    //     return back()->with($message);
+    // }
 
     /**
      * Deletes documents from the database

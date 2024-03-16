@@ -23,6 +23,17 @@ class UserSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        User::insert([
+            'username' => 'admin2',
+            'email' => 'testadmin2@gmail.com',
+            'password' => Hash::make('admin123456'),
+            'is_admin' => true,
+            'first_name' => 'Jane',
+            'last_name' => 'Doe',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
         
         User::factory()
             ->count(100)

@@ -22,7 +22,7 @@ class DocumentUpsertController extends Controller
          */
         $document->title = $validated['title'];
         $document->program = strtolower($validated['program']);
-        $document->date_submitted = $validated['date_submitted'];
+        $document->year_submitted = $validated['date_submitted'];
         $document->excerpt = $validated['excerpt'];
         $document->file_name = 'temporary-string';
         $document->save();
@@ -32,7 +32,7 @@ class DocumentUpsertController extends Controller
          */
         $directory = 'documents/' . strtolower($validated['program']. '/');
         $file_name = str_replace(' ', '-', $validated['upload_file']->getClientOriginalName());
-        $new_file_name = $document->id . '-' . $document->date_submitted . '-' . $file_name;
+        $new_file_name = $document->id . '-' . $document->year_submitted . '-' . $file_name;
 
         Storage::putFileAs($directory, $validated['upload_file'], $new_file_name);
         $this->generateThumbnail(Storage::path($directory . $new_file_name), $document->id);
@@ -70,7 +70,7 @@ class DocumentUpsertController extends Controller
         $validated = $request->validated();
 
         $document->title = $validated['title'];
-        $document->date_submitted = $validated['date_submitted'];
+        $document->year_submitted = $validated['date_submitted'];
         $document->excerpt = $validated['excerpt'];
 
         /* 

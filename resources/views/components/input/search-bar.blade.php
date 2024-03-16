@@ -1,3 +1,25 @@
+
+@php
+    $dateText = '';
+    $keywordPlaceHolder = '';
+    $route = Route::current()->getName();
+
+    switch ($route) {
+        case 'admin.users':
+            $dateText = 'Registered';
+            $keywordPlaceHolder = 'Search for id, username, or name...';
+            break;
+        
+        case('admin.documents' || 'library'):
+            $dateText = 'Submitted';
+            $keywordPlaceHolder = 'Search for title, author, keywords...';
+            break;
+
+        default:
+            break;
+    }
+@endphp
+
 <form 
     class="flex flex-row align-center justify-between w-3/5 flex-wrap gap-y-4 gap-x-2"
     id="searchBar"
@@ -22,24 +44,6 @@
         </x-input.button>
     </div>
 
-    @php
-        $dateText = '';
-        $route = Route::current()->getName();
-
-        switch ($route) {
-            case 'admin.users':
-                $dateText = 'Registered';
-                break;
-            
-            case('admin.documents' || 'library'):
-                $dateText = 'Submitted';
-                break;
-
-            default:
-                break;
-        }
-    @endphp
-
     <x-input.text-field 
         class="flex-grow h-9 basis-5/12 md:basis-3/12 lg:basis-1/5"
         label='{{ $dateText }} From' 
@@ -49,7 +53,10 @@
             class="dark:scheme-dark"
             id='dateFrom'
             name='dateFrom'
-            type='date'
+            type='number'
+            min=1900
+            step=1
+            placeholder="2000"
             value="{{Request::get('dateFrom')}}">
         </x-slot:input>
     </x-input.text-field>
@@ -63,7 +70,10 @@
             class="dark:scheme-dark"
             id='dateTo'
             name='dateTo'
-            type='date'
+            type='number'
+            min=1900
+            step=1
+            placeholder="2000"
             value="{{Request::get('dateTo')}}">
         </x-slot:input>
     </x-input.text-field>
@@ -111,7 +121,7 @@
                 </x-input.dropdown.item>
 
                 <x-input.dropdown.item value='0'>
-                    Student
+                   Regular
                 </x-input.dropdown.item>
 
                 <x-input.dropdown.item value='1'>
@@ -122,7 +132,7 @@
     @endif
 
     <x-input.dropdown 
-        class="flex-grow h-9 basis-5/12 md:basis-3/12 lg:basis-1/5"
+        class="flex-grow h-9 basis-5/12 md:basis-3/12 lg:basis-3/5"
         label='Sort By' 
         :alwaysShowLabel='true' 
         name='sortBy'>
@@ -177,12 +187,12 @@
                     Title (Z-A)
                 </x-input.dropdown.item>
 
-                <x-input.dropdown.item value='date_submitted asc'>
-                    Date Submitted (Oldest)
+                <x-input.dropdown.item value='year_submitted asc'>
+                    Year Submitted (Oldest)
                 </x-input.dropdown.item>
 
-                <x-input.dropdown.item value='date_submitted desc'>
-                    Date Submitted (Newest)
+                <x-input.dropdown.item value='year_submitted desc'>
+                    Year Submitted (Newest)
                 </x-input.dropdown.item>
             @endif
         </x-slot:dropdown>

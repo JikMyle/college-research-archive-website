@@ -37,15 +37,18 @@
                 </x-input.text-field>
 
                 <x-input.text-field 
-                    class="basis-1/5 flex-shrink h-10"
-                    label='Date Submitted: '
+                    class="basis-2/5 h-10"
+                    label='Year Submitted: '
                     :alwaysShowLabel='true'>
 
                     <x-slot:input
                         class="dark:scheme-dark" 
                         id='date_submitted'
                         name='date_submitted'
-                        type='date'
+                        type='number'
+                        min=1900
+                        step=1
+                        placeholder='ex. 2000'
                         required>
                     </x-slot:input>
                 </x-input.text-field>

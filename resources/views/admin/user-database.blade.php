@@ -187,7 +187,7 @@
                         <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $user->id }}</td>
                         <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $user->username }}</td>
                         <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $user->email }}</td>
-                        <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ ($user->is_admin) ? 'Admin' : 'Student' }}</td>
+                        <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ ($user->is_admin) ? 'Admin' : 'Regular' }}</td>
                         <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $user->first_name }}</td>
                         <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $user->last_name }}</td>
                         <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $user->created_at }}</td>
@@ -196,7 +196,7 @@
                         <td class="text-center align-center p-2">
                             <div class="flex flex-row flex-wrap items-center justify-between gap-2 w-full">
                                 @if (!Request::get('showTrash'))
-                                    @if ($user->is_admin)
+                                    {{-- @if ($user->is_admin)
                                         <x-input.button
                                             class="w-min leading-5 justify-center 2xl:w-auto 2xl:flex-grow"
                                             data-update-access-button
@@ -214,7 +214,7 @@
                                             data-input-selector='cb{{$user->id}}'>
                                             To Admin
                                         </x-input.button>
-                                    @endif
+                                    @endif --}}
 
                                 @else
                                     <x-input.button

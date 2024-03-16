@@ -135,9 +135,9 @@
                         <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-10 py-3">Title</th>
                         <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-10 py-3">Authors</th>
                         <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-6 py-3">Program</th>
-                        <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-10 py-3">Date Submitted</th>
+                        <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-10 py-3">Year Submitted</th>
                         <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-10 py-3">Date Uploaded</th>
-                        <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-10 py-3">Date Modified</th>
+                        {{-- <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-10 py-3">Date Modified</th> --}}
                         <th></th>
                     </tr>
     
@@ -198,9 +198,9 @@
                                     @endif
                                 @endforeach
                             </td>
-                            <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $document->date_submitted }}</td>
+                            <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $document->year_submitted }}</td>
                             <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $document->date_uploaded }}</td>
-                            <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $document->date_last_updated }}</td>
+                            {{-- <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $document->date_last_updated }}</td> --}}
                             
                             {{-- Single Row Action Buttons --}}
                             <td class="text-center align-center p-2">

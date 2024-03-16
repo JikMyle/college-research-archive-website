@@ -32,7 +32,7 @@ class DocumentRequest extends FormRequest
                         Rule::unique('documents')->ignore($this->document->id)
                     ],
                     'program' => 'required|min:2',
-                    'date_submitted' => 'required',
+                    'date_submitted' => 'required|integer|min:1900|max:' . now()->year,
                     'upload_file' => 'nullable|file|mimetypes:application/pdf',
                     'excerpt' => 'required',
                 ];
@@ -53,7 +53,7 @@ class DocumentRequest extends FormRequest
                 $rules = [
                     'title' => 'required|unique:documents',
                     'program' => 'required|min:2',
-                    'date_submitted' => 'required',
+                    'date_submitted' => 'required|integer|min:1900|max:' . now()->year,
                     'upload_file' => 'required|file|mimetypes:application/pdf',
                     'excerpt' => 'required',
                     'authors.*.first_name' => 'required',

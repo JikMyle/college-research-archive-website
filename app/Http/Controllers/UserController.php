@@ -36,11 +36,15 @@ class UserController extends Controller
             $updated['updated'] = 'password';
         }
 
-        $user->save();
+        $errorBagName = 'userInfo';
+        if($updated['updated'] == 'password') $errorBagName = 'userPassword';
+        
 
         if(key($message) == 'error') {
-            return back()->withErrors([$message])->with($updated);
+            return back()->withErrors([$message], $errorBagName)->with($updated);
         }
+
+        $user->save();
 
         return redirect()->route('account')->with($message)->with($updated);
     }
