@@ -109,7 +109,7 @@
 
             <div class="flex flex-row justify-between gap-6">
                 <a href="{{ route('admin.users') }}">
-                    <x-input.button class="px-6">
+                    <x-input.button class="px-6" type='button'>
                         Back
                     </x-input.button>
                 </a>
