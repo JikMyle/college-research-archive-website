@@ -114,7 +114,8 @@
             <div class="flex gap-6">
                 <a href="{{ route('admin.documents')}}">
                     <x-input.button
-                        class="px-10">
+                        class="px-10"
+                        type="button">
                         Back
                     </x-input.button>
                 </a>
