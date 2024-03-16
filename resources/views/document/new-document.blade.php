@@ -188,7 +188,9 @@
 
                 
                 <a href="{{ route('admin.documents') }}">
-                    <x-input.button class="px-12">
+                    <x-input.button 
+                        type='button'
+                        class="px-12">
                         Back
                     </x-input.button>
                 </a>
