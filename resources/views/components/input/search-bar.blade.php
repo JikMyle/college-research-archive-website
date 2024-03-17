@@ -132,7 +132,7 @@
     @endif
 
     <x-input.dropdown 
-        class="flex-grow h-9 basis-5/12 md:basis-3/12 lg:basis-3/5"
+        class="flex-grow h-9 basis-5/12 md:basis-3/12 lg:basis-1/5"
         label='Sort By' 
         :alwaysShowLabel='true' 
         name='sortBy'>
