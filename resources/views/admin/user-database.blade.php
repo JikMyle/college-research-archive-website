@@ -79,7 +79,7 @@
                     </x-input.button>
                 </form>
 
-                <form 
+                {{-- <form 
                     class="hidden"
                     id="updateAccessForm"
                     action="{{ route('admin.updateAccess') }}" 
@@ -87,7 +87,7 @@
 
                     @csrf
                     @method('patch')
-                </form>
+                </form> --}}
             </div>
 
             <div class="flex flex-row items-center">
