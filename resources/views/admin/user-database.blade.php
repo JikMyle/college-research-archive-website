@@ -78,8 +78,8 @@
                         {{(Request::get("showTrash")) ? "Delete Forever User/s" : "Delete User/s"}}
                     </x-input.button>
                 </form>
-
-                {{--<form 
+                
+                {{--<form
                     class="hidden"
                     id="updateAccessForm"
                     action="{{ route('admin.updateAccess') }}" 

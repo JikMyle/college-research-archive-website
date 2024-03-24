@@ -45,7 +45,7 @@
     </div>
 
     <x-input.text-field 
-        class="flex-grow h-9 basis-5/12 md:basis-3/12 lg:basis-1/5"
+        class="flex-grow h-9 basis-full md:basis-3/12 lg:basis-1/5"
         label='{{ $dateText }} From' 
         :alwaysShowLabel='true'>
 
@@ -62,7 +62,7 @@
     </x-input.text-field>
 
     <x-input.text-field 
-        class="flex-grow h-9 basis-5/12 md:basis-3/12 lg:basis-1/5"
+        class="flex-grow h-9 basis-full md:basis-3/12 lg:basis-1/5"
         label='{{ $dateText }} To' 
         :alwaysShowLabel='true'>
 
