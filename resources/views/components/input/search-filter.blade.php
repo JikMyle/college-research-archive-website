@@ -1,5 +1,6 @@
 
 @php
+    $hideFilters = 'true';
     $dateText = '';
     $keywordPlaceHolder = '';
     $route = Route::current()->getName();
@@ -17,6 +18,10 @@
 
         default:
             break;
+    }
+
+    if(Request::hasAny(['dateFrom', 'dateTo', 'sortBy', 'program', 'showTrashed'])) {
+        $hideFilters = 'false';
     }
 @endphp
 
@@ -52,7 +57,7 @@
     <div
         id="advancedFilters"
         class='flex flex-row flex-wrap w-full gap-y-3 gap-x-2 aria-hidden:hidden'
-        aria-hidden="true">
+        aria-hidden="{{ $hideFilters }}">
 
         <x-input.text-field 
             class="grow h-9 basis-2/5 md:basis-1/3 lg:basis-1/5"
