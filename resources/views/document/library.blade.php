@@ -1,17 +1,19 @@
 <x-shared.layout title='Document Library'>
 
-<div class="flex flex-grow flex-col items-center">
-    <div class="flex mb-6 mt-9 text-5xl font-bold tracking-tighter text-placeholder dark:text-text-dark">
+<div class="flex flex-grow flex-col w-screen items-center">
+    <div class="flex mb-6 mt-9 text-4xl md:text-5xl font-bold tracking-tighter text-placeholder dark:text-text-dark">
         Document Library
     </div>
 
-    <x-input.search-bar/>
+    <x-input.search-filter/>
 
     <div class="flex flex-col my-9 w-11/12 2xl:w-9/12">
-        <div class="grid grid-cols-3 w-full justify-between my-3">
-            <div></div>
+
+        {{-- Layout and code could still be improved --}}
+        <div class="flex flex-col max-md:items-center max-md:gap-y-2 md:flex-row md:grid md:grid-cols-3 w-full justify-between my-3">
+            <div class="hidden md:flex"></div>
             
-            <div class="flex items-center justify-self-center text-lg text-text-light dark:text-text-dark">
+            <div class="flex h-fit self-center items-center justify-self-center text-lg text-text-light dark:text-text-dark">
                 @if ($results->total() !=0)
                     Documents found: {{ $results->total() }}
                 @else
@@ -19,7 +21,7 @@
                 @endif
             </div>
 
-            <div class="flex flex-row items-center justify-self-end">
+            <div class="flex flex-row items-center justify-self-center md:justify-self-end">
                 <label 
                     class="text-base text-text-light dark:text-text-dark mr-3"
                     for="itemsPerPage">
@@ -62,7 +64,7 @@
         </div>
 
         {{-- Document Card Grid --}}
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-items-center">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8 items-center justify-items-center">
             @foreach ($results as $document)
                 <x-document-card :document='$document'/>
             @endforeach

@@ -4,6 +4,7 @@
 
 html {
     font-family: Inter;
+    font-weight: 300;
     @apply text-[14px] lg:text-[16px];
 }
 
@@ -71,11 +72,11 @@ input::placeholder {
     }
 
     .paginator {
-        @apply flex flex-row justify-center items-center gap-2
+        @apply flex flex-row justify-center items-center gap-1 md:gap-2
     }
 
     .paginator a, .paginator span {
-        @apply flex box-border w-10 h-10 justify-center items-center bg-none rounded-lg text-base text-text-light dark:text-text-dark border-placeholder dark:border-text-dark border-2
+        @apply flex box-border w-8 h-8 md:w-10 md:h-10 justify-center items-center bg-none rounded-lg text-base text-text-light dark:text-text-dark border-placeholder dark:border-text-dark border-2
     }
 
     .paginator span[aria-current='page'] {

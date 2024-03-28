@@ -1,5 +1,5 @@
 <x-shared.layout title='CCIS Archive - About Us'>
-    <div class="flex flex-grow flex-col items-center">
+    <div class="flex flex-grow flex-col w-full items-center">
         <section class="flex flex-col items-start gap-6 w-4/5 lg:w-3/5 m-32 mb-16">
             <h1 class="flex text-7xl font-bold text-text-light dark:text-text-dark">
                 Your Academic Archive, Your Way!

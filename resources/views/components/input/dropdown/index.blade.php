@@ -5,7 +5,7 @@
     'name'
 ])
 
-<div {{ $attributes->merge(['class' => 'flex flex-row items-center gap-3'])}}>
+<div {{ $attributes->merge(['class' => 'box-border flex flex-row items-center gap-3'])}}>
     @if ($label && $labelOnSide)
             <label 
                 class='flex w-auto text-text-light dark:text-text-dark'

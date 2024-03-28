@@ -7,26 +7,26 @@
         <x-input.form 
             class="w-3/5 lg:w-96" 
             :showLogo='false' 
-            :action='route("updateAccount")' 
+            :action='route("updatePassword")' 
             method='post'>
 
             @method('patch')
 
             <x-slot:header>
                 <h3 class="w-full text-center lg:text-start font-bold text-4xl text-sub-text dark:text-text-dark">
-                    Account Information
+                    Password Security
                 </h3>
             </x-slot:header>
 
             <x-slot:alerts>
-                @if ($errors->userInfo->any())
+                @if ($errors->userPassword->any())
                     <x-shared.alert 
                         type='error'
-                        :messages='$errors->userInfo->all()'
+                        :messages='$errors->userPassword->all()'
                         class="basis-3/5 flex-grow"
                     />
 
-                @elseif (session('success') && session('updated') == 'info')
+                @elseif (session('success') && session('updated') == 'password')
                     <x-shared.alert 
                         type='success'
                         :messages='[session("success")]'
@@ -35,70 +35,58 @@
                 @endif
             </x-slot:alerts>
 
-            <div class="flex flex-col w-full items-center gap-5">
+            <div class="flex w-full flex-col items-start gap-5">
                 <x-input.text-field 
                     class="w-full"
-                    label='Username'>
+                    label='Current Password'>
 
                     <x-slot:input 
                         class="!border-0 !border-b-2 !rounded-none !pt-1"
-                        id='username'
-                        name='username'
-                        placeholder='Username'
-                        :value='$user->username'
+                        id='password'
+                        name='password'
+                        type='password'
+                        placeholder='Current Password'
+                        value=''
                         required>
                     </x-slot:input>
                 </x-input.text-field>
 
                 <x-input.text-field 
                     class="w-full"
-                    label='Email'>
+                    label='New Password'>
 
                     <x-slot:input 
                         class="!border-0 !border-b-2 !rounded-none !pt-1"
-                        id='email'
-                        name='email'
-                        type='email'
-                        :value='$user->email'
-                        placeholder='Email Address'
+                        id='new_password'
+                        name='new_password'
+                        type='password'
+                        placeholder='New Password'
+                        value=''
                         required>
                     </x-slot:input>
                 </x-input.text-field>
 
                 <x-input.text-field 
                     class="w-full"
-                    label='First Name'>
+                    label='Confirm New Password'>
 
                     <x-slot:input 
                         class="!border-0 !border-b-2 !rounded-none !pt-1"
-                        id='first_name'
-                        name='first_name'
-                        :value='$user->first_name'
-                        placeholder='First Name'
-                        required>
-                    </x-slot:input>
-                </x-input.text-field>
-
-                <x-input.text-field 
-                    class="w-full"
-                    label='Last Name'>
-
-                    <x-slot:input 
-                        class="!border-0 !border-b-2 !rounded-none !pt-1"
-                        id='last_name'
-                        name='last_name'
-                        :value='$user->last_name'
-                        placeholder='Last Name'
+                        id='new_password_confirmation'
+                        name='new_password_confirmation'
+                        type='password'
+                        placeholder='Confirm New Password'
+                        value=''
                         required>
                     </x-slot:input>
                 </x-input.text-field>
             </div>
 
             <x-input.button
-                name='btnUpdateInfo'
+                name='btnUpdatePassword'
                 type='submit'
-                value='btnUpdateInfo'>
-                Save Changes
+                value='btnUpdatePassword'>
+                Change Password
             </x-input.button>
         </x-input.form>
     </div>

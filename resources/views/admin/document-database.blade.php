@@ -1,7 +1,7 @@
 <x-shared.layout title='Document Database'>
 
-    <div class="flex flex-grow flex-col items-center">
-        <div class="flex mb-6 mt-9 text-5xl font-bold tracking-tighter text-placeholder dark:text-text-dark">
+    <div class="flex flex-grow flex-col w-full items-center">
+        <div class="flex mb-6 mt-9 text-4xl md:text-5xl font-bold tracking-tighter text-placeholder dark:text-text-dark">
             @if (isset($results)) 
                 Documents found: {{$results->total()}}
             @else
@@ -9,9 +9,9 @@
             @endif
         </div>
     
-        <x-input.search-bar/>
+        <x-input.search-filter/>
         
-        <div class="flex flex-col my-9 w-4/5 2xl:w-auto">
+        <div class="flex flex-col my-9 w-11/12 md:w-4/5 2xl:w-auto">
     
             {{-- Alerts --}}
             <div class="flex">
@@ -33,9 +33,14 @@
                 <div class="flex flex-row gap-3">
                     <a href="{{ route('admin.createDocument') }}">
                         <x-input.button
-                            :icon='asset("icons/icons.svg#gg-add-r")'
-                            iconAlt='Rounded border plus icon'>
+                            class="max-md:hidden"
+                            :icon='asset("icons/icons.svg#gg-add-r")'>
                             Add Document
+                        </x-input.button>
+
+                        <x-input.button
+                            class="md:hidden"
+                            :icon='asset("icons/icons.svg#gg-add-r")'>
                         </x-input.button>
                     </a>
                     
@@ -50,12 +55,19 @@
     
                             <x-input.button
                                 :icon='asset("icons/icons.svg#gg-undo")'
-                                iconAlt='Undo icon'
-                                class="button-restore"
+                                class="button-restore max-md:hidden"
                                 type='submit'
                                 data-multi-select='Document'
                                 data-action='Restore'>
                                 Restore Document/s
+                            </x-input.button>
+
+                            <x-input.button
+                                :icon='asset("icons/icons.svg#gg-undo")'
+                                class="button-restore md:hidden"
+                                type='submit'
+                                data-multi-select='Document'
+                                data-action='Restore'>
                             </x-input.button>
                         </form>
                     @endif
@@ -70,12 +82,19 @@
     
                         <x-input.button
                             :icon='asset("icons/icons.svg#gg-trash")'
-                            iconAlt='Trash icon'
-                            class="button-delete"
+                            class="button-delete max-md:hidden"
                             type='submit'
                             data-multi-select='Document'
                             :data-action='(Request::get("showTrash")) ? "Delete Forever" : "Delete"'>
                             {{ (Request::get("showTrash")) ? "Delete Forever Document/s" : "Delete Document/s" }}
+                        </x-input.button>
+
+                        <x-input.button
+                            :icon='asset("icons/icons.svg#gg-trash")'
+                            class="button-delete md:hidden"
+                            type='submit'
+                            data-multi-select='Document'
+                            :data-action='(Request::get("showTrash")) ? "Delete Forever" : "Delete"'>
                         </x-input.button>
                     </form>
                 </div>
@@ -122,7 +141,7 @@
                 </div>
             </div>
     
-            <div id="database" data-resource='Document' class="flex w-[80vw] md:w-auto self-stretch xl:self-center overflow-auto">
+            <div id="database" data-resource='Document' class="flex w-[90vw] md:w-auto self-stretch xl:self-center overflow-auto">
                 <table class="w-full">
                     <tr class="border-y-divider-light dark:border-y-divider-dark border-y-2">
                         <th class=""> 
@@ -177,7 +196,7 @@
                             <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $document->id }}</td>
                             <td class="text-center align-center text-text-light dark:text-text-dark font-base">
                                 <a 
-                                    class="hover:underline"
+                                    class="hover:underline line-clamp-2"
                                     href="{{ route('viewDocument', $document->id )}}">
                                     {{ $document->title }}
                                 </a>

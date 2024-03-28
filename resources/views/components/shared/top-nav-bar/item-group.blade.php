@@ -1,3 +1,7 @@
-<ul {{ $attributes->merge(['class' => 'flex flex-row items-center'])}}>
+<div {{
+    $attributes->merge([
+        'class' => 'flex flex-row w-fit h-full items-center my-auto gap-3'
+    ])
+}}>
     {{ $slot }}
-</ul>
+</div>
