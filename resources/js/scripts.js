@@ -69,12 +69,10 @@ $(document).ready(function(){
     });
 
     $('*[data-activate-on="hover"]').on('mouseenter', function() {
-        checkAriaStates($(this));
         $("#" + $(this).attr('aria-controls')).attr('aria-hidden', false);
     })
 
     $('*[data-activate-on="hover"]').on('mouseleave', function() {
-        checkAriaStates($(this));
         $("#" + $(this).attr('aria-controls')).attr('aria-hidden', true);
     })
     
@@ -124,10 +122,17 @@ $(document).ready(function(){
         var $popUp = $('#' + $(this).attr('aria-controls'));
     
         if($popUp.attr('aria-hidden') == 'true') {
+            $(this).attr('aria-expanded', true);
             $popUp.attr('aria-hidden', false);
+
+            $(this).children('.expanded').addClass('hidden')
+            $(this).children('.collapsed').removeClass('hidden')
         }
         else {
+            $(this).attr('aria-expanded', false);
             $popUp.attr('aria-hidden', true);
+            $(this).children('.collapsed').addClass('hidden')
+            $(this).children('.expanded').removeClass('hidden')
         }
     })
 });
@@ -139,11 +144,6 @@ function setTheme(theme) {
     $('html').addClass(theme);
 
     localStorage.theme = theme;
-}
-
-function checkAriaStates(element) {
-    if($(this).attr('aria-expanded') == 'false') $(this).attr('aria-expanded', true);
-    else if($(this).attr('aria-expanded') == 'true') $(this).attr('aria-expanded', false);
 }
 
 function checkForHiddenLabel(input) {
@@ -247,7 +247,7 @@ function createAuthorRow(index) {
                         'type="button"' +
                         'data-author="author' + index + '">' +
                         '<svg class="w-6 h-6 text-inherit">' +
-                            '<use width="100%" height="100%" href="http://localhost:8000/icons/icons.svg#gg-close"></use>' +
+                            '<use width="100%" height="100%" href="https://nwssuccisarchive.online/icons/icons.svg#gg-close"></use>' +
                         '</svg>' +
                     '</button>' +                    
                 '</td>' +

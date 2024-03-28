@@ -15,52 +15,23 @@ class UserController extends Controller
         return view('account-settings', ['user' => Auth::user()]);
     }
 
+    public function showAccountSecurity() {
+        return view('account-security', ['user' => Auth::user()]);
+    }
+
     /*
         Updates the user's information
      */
-    public function updateAccount(UserRequest $request)
+    public function updateInfo(UserRequest $request)
     {
         $updated = ['updated' => 'info'];
         $message = ['error' => 'Could not update account information.'];
+        $errorBagName = 'userInfo';
 
         $user = $request->user();
 
         $validated = $request->validated();
 
-        if(isset($request->btnUpdateInfo)) {
-            $message = $this->updateAccountInfo($user, $validated);
-        }
-
-        elseif(isset($request->btnUpdatePassword)) {
-            $message = $this->updatePassword($user, $validated);
-            $updated['updated'] = 'password';
-        }
-
-        $errorBagName = 'userInfo';
-        if($updated['updated'] == 'password') $errorBagName = 'userPassword';
-        
-
-        if(key($message) == 'error') {
-            return back()->withErrors([$message], $errorBagName)->with($updated);
-        }
-
-        $user->save();
-
-        return redirect()->route('account')->with($message)->with($updated);
-    }
-
-    private function updatePassword($user, $validated) {
-
-        if(!Hash::check($validated['password'], $user->password)) {
-            $updated['updated'] = 'password';
-            return ['error' => 'Password field must match current password.'];
-        }
-
-        $user->password = $validated['new_password'];
-        return ['success' => 'Password successfully updated'];
-    }
-
-    private function updateAccountInfo($user, $validated) {
         $oldEmail = $user->email;
         $newEmail = $validated['email'];
 
@@ -74,6 +45,39 @@ class UserController extends Controller
             $user->email_verified_at = null;
         }
 
-        return ['success' => 'Account information successfully updated.'];
+        $message = ['success' => 'Account information successfully updated.'];
+
+        if(key($message) == 'error') {
+            return back()->withErrors([$message], $errorBagName)->with($updated);
+        }
+
+        $user->save();
+
+        return redirect()->route('account')->with($message)->with($updated);
+    }
+
+    public function updatePassword(UserRequest $request) {
+        $updated = ['updated' => 'password'];
+        $message = ['error' => 'Could not update account information.'];
+        $errorBagName = 'userPassword';
+
+        $user = $request->user();
+
+        $validated = $request->validated();
+
+        if(!Hash::check($validated['password'], $user->password)) {
+            $message = ['error' => 'Password field must match current password.'];
+        }
+
+        $user->password = $validated['new_password'];
+        $message = ['success' => 'Password successfully updated'];
+
+        if(key($message) == 'error') {
+            return back()->withErrors([$message], $errorBagName)->with($updated);
+        }
+
+        $user->save();
+
+        return redirect()->route('account-security')->with($message)->with($updated);
     }
 }

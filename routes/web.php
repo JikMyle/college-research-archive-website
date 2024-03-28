@@ -73,7 +73,10 @@ Route::middleware(['auth'])->group(function() {
 
     Route::controller(UserController::class)->group(function() {
         Route::get('account', 'showAccountSettings')->name('account');     // Shows user's account information
-        Route::patch('account', 'updateAccount')->name('updateAccount');
+        Route::patch('account', 'updateInfo')->name('updateAccount');
+
+        Route::get('account-security', 'showAccountSecurity')->name('account-security');
+        Route::patch('account-security', 'updatePassword')->name('updatePassword');
     });
 
     

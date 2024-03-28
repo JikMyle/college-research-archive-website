@@ -9,7 +9,7 @@
 @endphp
 
 <a 
-    class="flex flex-col relative max-w-64 h-96 xl:h-[28rem] bg-white shadow-md hover:drop-shadow hover:scale-105 transition"
+    class="flex flex-col relative max-w-64 h-72 md:h-96 xl:h-[28rem] bg-white shadow-md md:hover:drop-shadow md:hover:scale-105 transition"
     href="{{ route('viewDocument', $document->id )}}">
 
     <img 
@@ -17,19 +17,19 @@
         src="{{ asset($imgPath) }}" 
         alt="Document Cover Page">
 
-    <div class="absolute bottom-0 left-0 flex flex-col justify-end w-full h-3/5 z-10 bg-gradient-to-t from-card-bg-light dark:from-gray-950 from-60% md:from-50% to-85% to-transparent">
+    <div class="absolute bottom-0 left-0 flex flex-col justify-end w-full h-4/5 md:h-3/5 bg-gradient-to-t from-card-bg-light dark:from-gray-950 from-35% md:from-50% to-70% md:to-85% to-transparent">
         
-        <div class="flex flex-col h-[60%] md:h-1/2 justify-between p-2">
-            <p class="text-base font-bold text-text-light dark:text-text-dark leading-4 line-clamp-2">
+        <div class="flex flex-col h-2/5 md:h-3/5 lg:h-1/2 justify-between p-2">
+            <p class="text-base font-bold text-text-light dark:text-text-dark leading-4 max-md:truncate md:line-clamp-2">
                 {{ $document->title }}
             </p>
 
             <div class="flex flex-col gap-1">
-                <p class="text-sm text-text-light dark:text-sub-text text-ellipsis">
+                <p class="text-sm text-text-light dark:text-sub-text max-md:truncate md:line-clamp-2">
                     {{ strtoupper($document->program) }}
                 </p>
 
-                <p class="text-sm text-text-light dark:text-sub-text leading-4 line-clamp-2">
+                <p class="text-sm text-text-light dark:text-sub-text leading-4 max-md:truncate md:line-clamp-2">
                     @php
                         
                     @endphp
