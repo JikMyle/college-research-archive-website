@@ -68,6 +68,10 @@ Route::middleware(['auth'])->group(function() {
 
         if(!Storage::exists($url)) abort(404);
         
+        // Sets the time when the document was last viewed to now
+        $document->last_viewed_at = date('Y:m:d H:i:s', time());
+        $document->save();
+
         return response()->file(Storage::path($url), ['content-type'=>'application/pdf', 'X-Content-Type-Options' => 'nosniff']);
     })->name('viewDocument');
 

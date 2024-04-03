@@ -165,9 +165,11 @@
                     <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-10 py-3">Username</th>
                     <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-10 py-3">Email</th>
                     <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-6 py-3">Access Level</th>
-                    <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-10 py-3">First Name</th>
-                    <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-10 py-3">Last Name</th>
+                    <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-10 py-3">Name</th>
+                    {{-- <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-10 py-3">First Name</th>
+                    <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-10 py-3">Last Name</th> --}}
                     <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-10 py-3">Date Registered</th>
+                    <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-10 py-3">Last Login At</th>
                     <th></th>
                 </tr>
 
@@ -208,9 +210,11 @@
                         <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $user->username }}</td>
                         <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $user->email }}</td>
                         <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ ($user->is_admin) ? 'Admin' : 'Regular' }}</td>
-                        <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $user->first_name }}</td>
-                        <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $user->last_name }}</td>
+                        <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $user->first_name . ' ' . $user->last_name }}</td>
+                        {{-- <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $user->first_name }}</td>
+                        <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $user->last_name }}</td> --}}
                         <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $user->created_at }}</td>
+                        <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $user->last_login_at }}</td>
                         
                         {{-- Single Row Action Buttons --}}
                         <td class="text-center align-center p-2">

@@ -157,6 +157,7 @@
                         <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-10 py-3">Year Submitted</th>
                         <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-10 py-3">Date Uploaded</th>
                         {{-- <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-10 py-3">Date Modified</th> --}}
+                        <th class="align-center text-center text-text-light dark:text-text-dark font-bold text-lg leading-5 px-10 py-3">Last Viewed At</th>
                         <th></th>
                     </tr>
     
@@ -220,6 +221,7 @@
                             <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $document->year_submitted }}</td>
                             <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $document->date_uploaded }}</td>
                             {{-- <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $document->date_last_updated }}</td> --}}
+                            <td class="text-center align-center text-text-light dark:text-text-dark font-base">{{ $document->last_viewed_at }}</td>
                             
                             {{-- Single Row Action Buttons --}}
                             <td class="text-center align-center p-2">
