@@ -43,6 +43,9 @@ class LoginController extends Controller
             Auth::attempt(['username' => $user->username, 'password' => $request->password])) {
 
             Auth::loginUsingId($user->id);
+            $user->last_login_at = date('Y-m-d H:i:s', time());
+            $user->save();
+
             $request->session()->regenerate();
  
             return redirect()->intended('/admin/users')->with('message', 'Login successful');
