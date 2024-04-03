@@ -40,7 +40,7 @@
                 id='keywords'
                 name='keywords'
                 type='text'
-                placeholder="Search for title, author, keywords..."
+                placeholder="{{ $keywordPlaceHolder }}"
                 value="{{Request::get('keywords')}}">
             </x-slot:input>
         </x-input.text-field>
